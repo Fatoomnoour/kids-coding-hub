@@ -47,10 +47,20 @@ jobs:
           NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION: ${{ vars.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION }}
         run: npm run build:github
 
-      - name: Create and verify English page fallback
+      - name: Verify English page
+        shell: bash
         run: |
-          test -f out/en/index.html
-          cp out/en/index.html out/en.html
+          if [[ -f out/en.html ]]; then
+            echo "English page exported as out/en.html"
+          elif [[ -f out/en/index.html ]]; then
+            cp out/en/index.html out/en.html
+            echo "Created out/en.html from out/en/index.html"
+          else
+            echo "::error::The English page was not exported"
+            find out -maxdepth 2 -type f -print
+            exit 1
+          fi
+
           test -f out/en.html
 
       - name: Preserve static assets
