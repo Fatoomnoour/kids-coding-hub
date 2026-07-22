@@ -47,6 +47,12 @@ jobs:
           NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION: ${{ vars.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION }}
         run: npm run build:github
 
+      - name: Create and verify English page fallback
+        run: |
+          test -f out/en/index.html
+          cp out/en/index.html out/en.html
+          test -f out/en.html
+
       - name: Preserve static assets
         run: touch out/.nojekyll
 

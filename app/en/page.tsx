@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import KidsCodingHubPage from "../KidsCodingHubPage";
-import { absoluteSiteUrl } from "../site-config";
+import { absoluteSiteUrl, ENGLISH_PATH } from "../site-config";
 
 export const metadata: Metadata = {
   title: "Kids Coding Hub | Coding & AI for Kids",
@@ -16,14 +16,14 @@ export const metadata: Metadata = {
     "school coding workshops",
   ],
   alternates: {
-    canonical: absoluteSiteUrl("/en/"),
-    languages: { "ar-EG": absoluteSiteUrl("/"), "en": absoluteSiteUrl("/en/") },
+    canonical: absoluteSiteUrl(ENGLISH_PATH),
+    languages: { "ar-EG": absoluteSiteUrl("/"), "en": absoluteSiteUrl(ENGLISH_PATH) },
   },
   openGraph: {
     type: "website",
     locale: "en_US",
     alternateLocale: "ar_EG",
-    url: absoluteSiteUrl("/en/"),
+    url: absoluteSiteUrl(ENGLISH_PATH),
     title: "Kids Coding Hub | From curiosity to a first project",
     description: "Clear, hands-on, project-based coding and AI learning for children.",
     siteName: "Kids Coding Hub",

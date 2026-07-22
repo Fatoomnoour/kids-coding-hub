@@ -3,7 +3,7 @@
 /* eslint-disable @next/next/no-img-element */
 
 import { useEffect, useMemo, useState } from "react";
-import { absoluteSiteUrl, sitePath } from "./site-config";
+import { absoluteSiteUrl, ENGLISH_PATH, sitePath } from "./site-config";
 
 export type Language = "ar" | "en";
 
@@ -403,7 +403,7 @@ export default function KidsCodingHubPage({ language }: { language: Language }) 
         "@id": absoluteSiteUrl("/#organization"),
         name: "Kids Coding Hub",
         alternateName: "كيدز كودينج هب",
-        url: absoluteSiteUrl(ar ? "/" : "/en/"),
+        url: absoluteSiteUrl(ar ? "/" : ENGLISH_PATH),
         logo: absoluteSiteUrl("/media/kids-coding-hub-logo.png"),
         founder: { "@id": absoluteSiteUrl("/#fatma-nour") },
         sameAs: [SOCIAL.facebook, SOCIAL.instagram, SOCIAL.youtube, SOCIAL.blog],
@@ -439,7 +439,7 @@ export default function KidsCodingHubPage({ language }: { language: Language }) 
 
       <header className="site-header">
         <div className="header-inner">
-          <a className="brand" href={`${sitePath(ar ? "/" : "/en/")}#home`} aria-label={ar ? "Kids Coding Hub — الرئيسية" : "Kids Coding Hub — Home"}>
+          <a className="brand" href={`${sitePath(ar ? "/" : ENGLISH_PATH)}#home`} aria-label={ar ? "Kids Coding Hub — الرئيسية" : "Kids Coding Hub — Home"}>
             <Logo compact />
             <span className="brand-type"><b>Kids Coding Hub</b><small>{ar ? "نتعلّم • نبني • نشارك" : "Learn • Build • Share"}</small></span>
           </a>
@@ -451,7 +451,7 @@ export default function KidsCodingHubPage({ language }: { language: Language }) 
           </nav>
 
           <div className="header-actions">
-            <a className="language-link" href={sitePath(ar ? "/en/" : "/")} hrefLang={ar ? "en" : "ar"}>{ar ? "EN" : "عربي"}</a>
+            <a className="language-link" href={sitePath(ar ? ENGLISH_PATH : "/")} hrefLang={ar ? "en" : "ar"}>{ar ? "EN" : "عربي"}</a>
             <a className="header-cta" href="#path-finder">{ar ? "اختبار المسار" : "Find a path"}</a>
             <button className="menu-button" type="button" aria-expanded={menuOpen} aria-controls="mobile-navigation" aria-label={ar ? "فتح القائمة" : "Open menu"} onClick={() => setMenuOpen((open) => !open)}>
               <span /><span /><span />
@@ -692,7 +692,7 @@ export default function KidsCodingHubPage({ language }: { language: Language }) 
 
       <footer className="site-footer">
         <div className="footer-main">
-          <div className="footer-brand"><a className="brand" href={sitePath(ar ? "/" : "/en/")}><Logo compact /><span className="brand-type"><b>Kids Coding Hub</b><small>{ar ? "نتعلّم • نبني • نشارك" : "Learn • Build • Share"}</small></span></a><p>{ar ? "تعليم برمجة وذكاء اصطناعي قائم على المشروعات للأطفال من 5 إلى 16 سنة." : "Project-based coding and AI learning for ages 5 to 16."}</p></div>
+          <div className="footer-brand"><a className="brand" href={sitePath(ar ? "/" : ENGLISH_PATH)}><Logo compact /><span className="brand-type"><b>Kids Coding Hub</b><small>{ar ? "نتعلّم • نبني • نشارك" : "Learn • Build • Share"}</small></span></a><p>{ar ? "تعليم برمجة وذكاء اصطناعي قائم على المشروعات للأطفال من 5 إلى 16 سنة." : "Project-based coding and AI learning for ages 5 to 16."}</p></div>
           <div className="footer-nav"><b>{ar ? "استكشف" : "Explore"}</b><a href="#programs">{ar ? "المسارات" : "Programs"}</a><a href="#path-finder">{ar ? "اختبار المسار" : "Path finder"}</a><a href="#schools">{ar ? "للمدارس" : "For schools"}</a><a href="#about">{ar ? "عن فاطمة" : "About Fatma"}</a></div>
           <div className="footer-nav"><b>{ar ? "تابعنا" : "Follow"}</b><ExternalLink href={SOCIAL.instagram}>Instagram</ExternalLink><ExternalLink href={SOCIAL.facebook}>Facebook</ExternalLink><ExternalLink href={SOCIAL.youtube}>YouTube</ExternalLink><ExternalLink href={SOCIAL.linkedin}>LinkedIn</ExternalLink></div>
           <div className="footer-contact"><b>{ar ? "جاهزة للبداية؟" : "Ready to begin?"}</b><p>{ar ? "أرسلي العمر والهدف والدولة." : "Share the age, goal, and country."}</p><a href={waLink(parentMessage)} target="_blank" rel="noreferrer">WhatsApp<ArrowIcon /></a></div>

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import KidsCodingHubPage from "./KidsCodingHubPage";
-import { absoluteSiteUrl } from "./site-config";
+import { absoluteSiteUrl, ENGLISH_PATH } from "./site-config";
 
 export const metadata: Metadata = {
   title: "Kids Coding Hub | تعليم البرمجة والذكاء الاصطناعي للأطفال",
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   ],
   alternates: {
     canonical: absoluteSiteUrl("/"),
-    languages: { "ar-EG": absoluteSiteUrl("/"), "en": absoluteSiteUrl("/en/") },
+    languages: { "ar-EG": absoluteSiteUrl("/"), "en": absoluteSiteUrl(ENGLISH_PATH) },
   },
   openGraph: {
     type: "website",

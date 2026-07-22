@@ -1,11 +1,11 @@
 import type { MetadataRoute } from "next";
-import { absoluteSiteUrl } from "./site-config";
+import { absoluteSiteUrl, ENGLISH_PATH } from "./site-config";
 
 export const dynamic = "force-static";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     { url: absoluteSiteUrl("/"), lastModified: new Date("2026-07-22"), changeFrequency: "weekly", priority: 1 },
-    { url: absoluteSiteUrl("/en/"), lastModified: new Date("2026-07-22"), changeFrequency: "weekly", priority: 0.8 },
+    { url: absoluteSiteUrl(ENGLISH_PATH), lastModified: new Date("2026-07-22"), changeFrequency: "weekly", priority: 0.8 },
   ];
 }
