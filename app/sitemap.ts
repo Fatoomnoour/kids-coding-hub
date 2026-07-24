@@ -5,7 +5,7 @@ export const dynamic = "force-static";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
-    { url: absoluteSiteUrl("/"), lastModified: new Date("2026-07-22"), changeFrequency: "weekly", priority: 1 },
-    { url: absoluteSiteUrl(ENGLISH_PATH), lastModified: new Date("2026-07-22"), changeFrequency: "weekly", priority: 0.8 },
+    { url: absoluteSiteUrl("/"), lastModified: new Date("2026-07-24"), changeFrequency: "weekly", priority: 1 },
+    { url: absoluteSiteUrl(ENGLISH_PATH), lastModified: new Date("2026-07-24"), changeFrequency: "weekly", priority: 0.8 },
   ];
 }

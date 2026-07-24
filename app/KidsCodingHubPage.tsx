@@ -17,6 +17,7 @@ const SOCIAL = {
 };
 
 const WHATSAPP_NUMBER = "201097430973";
+const CONTACT_EMAIL = "fatmanour048@gmail.com";
 
 const programs = [
   {
@@ -635,7 +636,7 @@ export default function KidsCodingHubPage({ language }: { language: Language }) 
             <label>{ar ? "نوع الجهة" : "Organization type"}<select value={orgBrief.type} onChange={(event) => setOrgBrief((brief) => ({ ...brief, type: event.target.value }))}><option value="school">{ar ? "مدرسة" : "School"}</option><option value="academy">{ar ? "أكاديمية" : "Academy"}</option><option value="community">{ar ? "مبادرة أو مجتمع" : "Community"}</option><option value="company">{ar ? "شركة" : "Company"}</option></select></label>
             <label>{ar ? "الفئة العمرية" : "Age group"}<select value={orgBrief.age} onChange={(event) => setOrgBrief((brief) => ({ ...brief, age: event.target.value }))}><option value="5-7">5–7</option><option value="8-11">8–11</option><option value="11-14">11–14</option><option value="12-16">12–16</option><option value="mixed">{ar ? "أعمار متنوعة" : "Mixed ages"}</option></select></label>
             <label>{ar ? "العدد التقريبي" : "Approximate group size"}<select value={orgBrief.size} onChange={(event) => setOrgBrief((brief) => ({ ...brief, size: event.target.value }))}><option value="under-10">{ar ? "أقل من 10" : "Under 10"}</option><option value="10-20">10–20</option><option value="21-40">21–40</option><option value="40+">40+</option></select></label>
-            <a className="button mint" href={waLink(orgMessage)} target="_blank" rel="noreferrer" onClick={() => trackLead("organization_brief")}>{ar ? "أرسل الطلب على WhatsApp" : "Send request on WhatsApp"}<ArrowIcon /></a>
+            <a className="button mint" href={waLink(orgMessage)} target="_blank" rel="noreferrer" onClick={() => trackLead("organization_brief")}>{ar ? "اطلب عرضًا فنيًا وماليًا" : "Request a technical & commercial proposal"}<ArrowIcon /></a>
             <p>{ar ? "ستفتح رسالة جاهزة؛ أضيفي اسم الجهة والمدينة والموعد قبل الإرسال." : "A prepared message will open. Add your organization, location, and date before sending."}</p>
           </div>
         </section>
@@ -650,11 +651,17 @@ export default function KidsCodingHubPage({ language }: { language: Language }) 
             <h2 id="about-title">{ar ? "أنا فاطمة نور؛ أجمع بين خبرة التعليم وبناء التقنية." : "I'm Fatma Nour—combining teaching experience with real technical practice."}</h2>
             <p>{ar ? "مدربة برمجة وذكاء اصطناعي للأطفال والمبتدئين، ومهندسة بيانات تصمّم منصات تعلم تفاعلية. هدفي أن يشعر الطفل أن التقنية مساحة يفهمها ويصنع داخلها، لا شيئًا يستهلكه فقط." : "I am a coding and AI instructor for kids and beginners, and a data engineer who builds interactive learning products. My goal is for children to see technology as something they can understand and create—not only consume."}</p>
             <div className="founder-facts"><div><b>+4</b><span>{ar ? "سنوات في التعليم العملي" : "Years in hands-on teaching"}</span></div><div><b>18K+</b><span>{ar ? "متابع في المجتمع المهني" : "Professional community"}</span></div><div><b>AR / EN</b><span>{ar ? "تعليم عربي ومصطلحات عالمية" : "Arabic-first, globally relevant"}</span></div></div>
+            <p className="availability-note">
+              <span aria-hidden="true" />
+              {ar
+                ? "من مصر • متاحة للتدريب عن بُعد، والتعاون مع جهات الخليج، والانتقال للفرصة المناسبة"
+                : "Based in Egypt • Available for remote delivery, GCC partnerships, and relocation"}
+            </p>
             <div className="social-row">
-              <ExternalLink href={SOCIAL.linkedin}>LinkedIn</ExternalLink><ExternalLink href={SOCIAL.instagram}>Instagram</ExternalLink><ExternalLink href={SOCIAL.facebook}>Facebook</ExternalLink><ExternalLink href={SOCIAL.youtube}>YouTube</ExternalLink>
+              <ExternalLink href={SOCIAL.linkedin}>LinkedIn</ExternalLink><ExternalLink href={SOCIAL.instagram}>Instagram</ExternalLink><ExternalLink href={SOCIAL.facebook}>Facebook</ExternalLink><ExternalLink href={SOCIAL.youtube}>YouTube</ExternalLink><a href={`mailto:${CONTACT_EMAIL}`}>Email</a>
             </div>
             <div className="tech-proof">
-              <div className="tech-proof-head"><span>{ar ? "مختبر فاطمة التقني" : "Fatma's technical lab"}</span><ExternalLink href={SOCIAL.github}>{ar ? "كل المشاريع" : "All projects"}<ArrowIcon /></ExternalLink></div>
+              <div className="tech-proof-head"><span>{ar ? "خبرة تقنية تدعم تجربة التعلّم" : "Technical work behind the learning"}</span><ExternalLink href={SOCIAL.github}>{ar ? "كل المشاريع" : "All projects"}<ArrowIcon /></ExternalLink></div>
               {technicalProof.map((project) => <ExternalLink href={project.href} key={project.title}><div><b>{project.title}</b><span>{ar ? project.textAr : project.textEn}</span></div><ArrowIcon /></ExternalLink>)}
             </div>
           </div>

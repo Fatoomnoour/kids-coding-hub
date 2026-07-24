@@ -17,7 +17,11 @@ export const metadata: Metadata = {
   ],
   alternates: {
     canonical: absoluteSiteUrl(ENGLISH_PATH),
-    languages: { "ar-EG": absoluteSiteUrl("/"), "en": absoluteSiteUrl(ENGLISH_PATH) },
+    languages: {
+      "ar-EG": absoluteSiteUrl("/"),
+      en: absoluteSiteUrl(ENGLISH_PATH),
+      "x-default": absoluteSiteUrl("/"),
+    },
   },
   openGraph: {
     type: "website",

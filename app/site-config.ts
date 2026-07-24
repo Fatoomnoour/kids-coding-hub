@@ -1,4 +1,4 @@
-const DEFAULT_SITE_URL = "https://fatma-nour-tech.plus1o.chatgpt.site";
+const DEFAULT_SITE_URL = "https://fatoomnoour.github.io/kids-coding-hub";
 
 export const SITE_URL = (
   process.env.NEXT_PUBLIC_SITE_URL ?? DEFAULT_SITE_URL
@@ -8,10 +8,9 @@ export const BASE_PATH = (
   process.env.NEXT_PUBLIC_BASE_PATH ?? ""
 ).replace(/\/$/, "");
 
-// GitHub Pages is most reliable with a real, root-level HTML file. During
-// Pages builds the workflow creates /en.html from the statically exported
-// /en/index.html. Other hosts keep the normal clean /en/ route.
-export const ENGLISH_PATH = BASE_PATH ? "/en.html" : "/en/";
+// Keep a clean, stable URL for the English experience on every host.
+// The GitHub Pages preparation script guarantees /en/index.html exists.
+export const ENGLISH_PATH = "/en/";
 
 export function sitePath(path = "/") {
   const normalizedPath = path.startsWith("/") ? path : `/${path}`;

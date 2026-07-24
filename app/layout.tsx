@@ -23,7 +23,6 @@ export const metadata: Metadata = {
     shortcut: absoluteSiteUrl("/media/kids-coding-hub-logo.png"),
     apple: absoluteSiteUrl("/media/kids-coding-hub-logo.png"),
   },
-  other: { "codex-preview": "development" },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

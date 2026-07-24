@@ -1,0 +1,30 @@
+KIDS CODING HUB — BRAND & SEO UPDATE
+
+1) Extract this ZIP.
+2) Copy all extracted folders and files into the current project folder:
+   C:\Users\LENOVO\Downloads\Kids-Coding-Hub-GitHub-Ready\Kids-Coding-Hub-GitHub
+3) Choose "Replace the files in the destination" when Windows asks.
+4) Open CMD in the project folder and run:
+
+   git add .
+   git commit -m "Refine Kids Coding Hub brand and bilingual SEO"
+   git push
+
+5) Wait for the new GitHub Action to become green.
+6) Test both URLs:
+
+   https://fatoomnoour.github.io/kids-coding-hub/
+   https://fatoomnoour.github.io/kids-coding-hub/en/
+
+Do not run git init again.
+
+WHAT THIS UPDATE CHANGES
+
+- Keeps Kids Coding Hub as the single public brand.
+- Positions Fatma Nour as Founder & Instructor.
+- Keeps Data Engineering as technical credibility, not a second brand.
+- Makes the English HTML load initially with lang="en" and dir="ltr".
+- Removes development-only codex-preview metadata.
+- Adds clean /en/ canonical, hreflang, x-default, and sitemap URLs.
+- Keeps /en.html available for compatibility.
+- Adds GCC/remote availability, email contact, and proposal wording.

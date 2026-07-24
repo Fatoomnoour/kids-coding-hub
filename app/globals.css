@@ -571,6 +571,29 @@ img { max-width: 100%; }
 .founder-facts > div + div { border-inline-start: 1px solid var(--line); }
 .founder-facts b { color: var(--blue); font: 800 21px/1 "Inter", sans-serif; }
 .founder-facts span { color: var(--muted); font-size: 9px; line-height: 1.45; font-weight: 800; }
+.availability-note {
+  width: fit-content;
+  margin: -11px 0 19px !important;
+  padding: 9px 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid #bcebdd;
+  border-radius: 999px;
+  color: #215c4c !important;
+  background: var(--mint-soft);
+  font-size: 10px !important;
+  line-height: 1.45 !important;
+  font-weight: 800;
+}
+.availability-note > span {
+  width: 7px;
+  height: 7px;
+  flex: 0 0 7px;
+  border-radius: 50%;
+  background: var(--mint-dark);
+  box-shadow: 0 0 0 4px rgba(8, 127, 98, .1);
+}
 .social-row { display: flex; flex-wrap: wrap; gap: 8px; }
 .social-row a { padding: 9px 12px; border: 1px solid var(--line); border-radius: 9px; color: #43506a; background: #fafbfe; font: 700 10px/1 "Inter", sans-serif; }
 .social-row a:hover { border-color: #9bb0ef; color: var(--blue); background: var(--blue-soft); }
