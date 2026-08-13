@@ -4,7 +4,7 @@ import { absoluteSiteUrl, ENGLISH_PATH } from "../site-config";
 
 export const metadata: Metadata = {
   title: "Coding for Kids Online",
-  description: "A practical 3-month, 24-live-session program helping ages 5–16 build a game, interactive story, or Python project with clear parent follow-up.",
+  description: "A practical 3-month, 24-live-session program helping ages 6–18+ build a game, interactive story, or Python project with clear parent follow-up.",
   keywords: [
     "coding for kids",
     "Scratch course for kids",
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Kids Coding Hub",
-    description: "Project-based coding and AI learning for ages 5–16, with a clear program journey and final project.",
+    description: "Project-based coding and AI learning for ages 6–18+, with a clear program journey and final project.",
     images: [absoluteSiteUrl("/media/kids-coding-hub-og.jpg")],
   },
 };

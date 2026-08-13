@@ -265,7 +265,7 @@ img { max-width: 100%; }
 .button.mint:hover { transform: translateY(-2px); background: #55dfb8; }
 .microcopy { margin: 13px 3px 0; display: flex; align-items: center; gap: 7px; color: var(--muted); font-size: 12px; font-weight: 700; }
 .microcopy svg, .school-services svg, .finder-benefits svg { width: 16px; height: 16px; fill: none; stroke: var(--mint-dark); stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
-.hero-proof { max-width: 650px; margin-top: 29px; display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid #dce3f0; }
+.hero-proof { max-width: 650px; margin-top: 29px; display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid #dce3f0; }
 .hero-proof > div { padding: 18px 16px 0 0; display: grid; gap: 3px; }
 [dir="ltr"] .hero-proof > div { padding: 18px 0 0 16px; }
 .hero-proof > div + div { border-inline-start: 1px solid #dce3f0; padding-inline-start: 18px; }
@@ -289,23 +289,16 @@ img { max-width: 100%; }
 .photo-caption { position: absolute; z-index: 2; inset-inline: 26px; bottom: 23px; display: grid; gap: 4px; color: white; }
 .photo-caption span { color: rgba(255, 255, 255, .78); font-size: 12px; font-weight: 700; }
 .photo-caption b { font: 800 22px/1 "Inter", sans-serif; }
-.hero-logo-card {
+.hero-mascot {
   position: absolute;
-  z-index: 5;
-  inset-inline-start: -24px;
-  bottom: 18px;
-  width: 222px;
-  padding: 9px 15px 16px;
-  display: grid;
-  justify-items: center;
-  border: 1px solid #e1e6ef;
-  border-radius: 21px;
-  background: rgba(255, 255, 255, .96);
-  box-shadow: var(--shadow-sm);
-  transform: rotate(-2.2deg);
+  z-index: 2;
+  left: -112px;
+  bottom: 32px;
+  width: 230px;
+  height: 260px;
+  pointer-events: none;
 }
-.hero-logo-card .logo-crop { margin: -14px 0 -26px; }
-.hero-logo-card > span:last-child { color: #5d6780; text-align: center; font-size: 10px; line-height: 1.5; font-weight: 700; }
+.hero-mascot img { width: 340px; max-width: none; height: auto; transform: translateX(-22px); }
 .floating-badge {
   position: absolute;
   z-index: 6;
@@ -461,7 +454,8 @@ img { max-width: 100%; }
 .quiz-result small { color: var(--mint-dark); font-size: 11px; font-weight: 900; }
 .quiz-result h3 { margin: 7px 0 10px; color: var(--blue); font-size: 32px; line-height: 1.3; font-weight: 900; }
 .quiz-result p { max-width: 520px; margin: 0; color: var(--muted); font-size: 14px; line-height: 1.75; }
-.quiz-result > b { margin: 14px 0 22px; color: var(--ink); font-size: 13px; }
+.quiz-result > b { margin: 14px 0 8px; color: var(--ink); font-size: 13px; }
+.result-note { margin: 0 0 18px; color: var(--muted); font-size: 11px; line-height: 1.7; }
 .quiz-result .button { min-height: 51px; font-size: 13px; }
 .restart-quiz { margin-top: 12px; border: 0; color: var(--muted); background: transparent; font-size: 11px; font-weight: 800; text-decoration: underline; cursor: pointer; }
 
@@ -871,4 +865,11 @@ img { max-width: 100%; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
+}
+
+@media (max-width: 700px) {
+  .hero-proof { grid-template-columns: repeat(2, 1fr); }
+  .hero-proof > div:nth-child(3) { border-inline-start: 0; padding-inline-start: 0; }
+  .hero-mascot { left: -74px; bottom: 44px; width: 150px; height: 176px; }
+  .hero-mascot img { width: 230px; transform: translateX(-18px); }
 }

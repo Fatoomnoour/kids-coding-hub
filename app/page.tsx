@@ -4,7 +4,7 @@ import { absoluteSiteUrl, ENGLISH_PATH } from "./site-config";
 
 export const metadata: Metadata = {
   title: "تعليم البرمجة للأطفال أونلاين",
-  description: "برنامج عربي عملي لمدة 3 أشهر و24 جلسة Live، يساعد الأطفال من 5 إلى 16 سنة على بناء لعبة أو قصة تفاعلية أو مشروع Python مع متابعة واضحة لولي الأمر.",
+  description: "برنامج عربي عملي لمدة 3 أشهر و24 جلسة Live، يساعد الأطفال من 6 إلى 18+ سنة على بناء لعبة أو قصة تفاعلية أو مشروع Python مع متابعة واضحة لولي الأمر.",
   keywords: [
     "تعليم البرمجة للأطفال",
     "كورس Scratch للأطفال",
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Kids Coding Hub",
-    description: "تعليم برمجة وذكاء اصطناعي قائم على المشروعات للأطفال من 5 إلى 16 سنة، مع برنامج واضح ومشروع نهائي.",
+    description: "تعليم برمجة وذكاء اصطناعي قائم على المشروعات للأطفال من 6 إلى 18+ سنة، مع برنامج واضح ومشروع نهائي.",
     images: [absoluteSiteUrl("/media/kids-coding-hub-og.jpg")],
   },
 };

@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     default: "Kids Coding Hub | Coding & AI for Kids",
     template: "%s | Kids Coding Hub",
   },
-  description: "Arabic-first, project-based coding and AI learning for children ages 5–16 with Fatma Nour.",
+  description: "Arabic-first, project-based coding and AI learning for children ages 6–18+ with Fatma Nour.",
   authors: [{ name: "Fatma Nour", url: "https://www.linkedin.com/in/fatma-nour-ai-trainer" }],
   creator: "Fatma Nour",
   publisher: "Kids Coding Hub",

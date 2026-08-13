@@ -21,8 +21,8 @@ const CONTACT_EMAIL = "fatmanour048@gmail.com";
 
 const programs = [
   {
-    ageAr: "5–7 سنوات",
-    ageEn: "Ages 5–7",
+    ageAr: "6–8 سنوات",
+    ageEn: "Ages 6–8",
     titleAr: "مستكشف ScratchJr",
     titleEn: "ScratchJr Explorer",
     introAr: "بداية هادئة لفهم التسلسل والحركة وصناعة قصة تفاعلية.",
@@ -38,8 +38,8 @@ const programs = [
     available: true,
   },
   {
-    ageAr: "7–9 سنوات",
-    ageEn: "Ages 7–9",
+    ageAr: "8–10 سنوات",
+    ageEn: "Ages 8–10",
     titleAr: "Digital Storytellers",
     titleEn: "Digital Storytellers",
     introAr: "نبني Animation أو Mini Game من خيال الطفل إلى شاشة تفاعلية.",
@@ -55,8 +55,8 @@ const programs = [
     available: false,
   },
   {
-    ageAr: "9–12 سنة",
-    ageEn: "Ages 9–12",
+    ageAr: "10–13 سنة",
+    ageEn: "Ages 10–13",
     titleAr: "صانع ألعاب Scratch",
     titleEn: "Scratch Game Maker",
     introAr: "من فكرة على الورق إلى لعبة بشخصيات ونقاط وتحديات.",
@@ -72,8 +72,8 @@ const programs = [
     available: false,
   },
   {
-    ageAr: "13–16 سنة",
-    ageEn: "Ages 13–16",
+    ageAr: "14–18+ سنة",
+    ageEn: "Ages 14–18+",
     titleAr: "باني مشاريع Python",
     titleEn: "Python Project Builder",
     introAr: "نكتب كودًا حقيقيًا ونبني Quiz أو لعبة نصية أو أداة صغيرة.",
@@ -302,31 +302,39 @@ function trackLead(source: string) {
 }
 
 function getQuizResult(answer: QuizAnswer, ar: boolean) {
-  if (answer.age === "5-7") {
+  if (answer.age === "6-8") {
     return {
       title: ar ? "مستكشف ScratchJr" : "ScratchJr Explorer",
-      text: ar ? "أفضل بداية لطفلك هي القصص والحركة والتسلسل؛ يتعلم المنطق دون أن يشعر أنه أمام درس معقد." : "The best start is stories, motion, and sequencing—building logic without making it feel complicated.",
-      project: ar ? "المشروع المقترح: قصة تفاعلية أو لعبة قصيرة." : "Suggested project: an interactive story or mini game.",
+      text: ar
+        ? "بداية الطفل الأنسب هي القصص والحركة والتسلسل. وإذا كان يحب الذكاء الاصطناعي، نربط فضوله بتجارب وأسئلة بسيطة تناسب عمره."
+        : "The best start is stories, motion, and sequencing. If they are curious about AI, we connect that curiosity to simple, age-appropriate experiments.",
+      project: ar ? "قصة تفاعلية أو لعبة قصيرة" : "An interactive story or mini game",
     };
   }
-  if (answer.age === "8-10" || (answer.age === "11-13" && answer.experience === "blocks")) {
+  if (answer.age === "9-11" && answer.interest !== "games") {
+    return {
+      title: "Digital Storytellers",
+      text: ar
+        ? "هذا المسار مناسب لمن يحب تحويل فكرة أو قصة إلى Animation أو تجربة تفاعلية، مع بناء المنطق خطوة بخطوة."
+        : "This path suits learners who enjoy turning an idea or story into an animation or interactive experience while building logic step by step.",
+      project: ar ? "Animation أو Mini Game" : "An animation or mini game",
+    };
+  }
+  if (answer.age === "9-11" || (answer.age === "12-14" && answer.experience === "blocks")) {
     return {
       title: ar ? "صانع ألعاب Scratch" : "Scratch Game Maker",
-      text: ar ? "هذا المسار يحوّل حب اللعب إلى تفكير منطقي وتصميم شخصيات وقواعد وتحديات." : "This path turns a love of games into logic, character design, rules, and challenges.",
-      project: ar ? "المشروع المقترح: لعبة نقاط ومستويات من تصميم الطفل." : "Suggested project: a score-and-level game designed by the learner.",
-    };
-  }
-  if (answer.age === "14+" || answer.interest === "ai" || answer.experience === "python") {
-    return {
-      title: ar ? "مختبر Python والـAI" : "Python & AI Lab",
-      text: ar ? "البداية الأنسب هي كود Python حقيقي ثم تجارب بيانات وذكاء اصطناعي مبسطة ومسؤولة." : "The best fit is real Python code followed by approachable, responsible data and AI experiments.",
-      project: ar ? "المشروع المقترح: تطبيق بيانات أو نموذج AI مبسط." : "Suggested project: a data app or an approachable AI prototype.",
+      text: ar
+        ? "هذا المسار يحوّل حب الألعاب إلى تفكير منطقي وتصميم شخصيات وقواعد ونقاط وتحديات."
+        : "This path turns a love of games into logic, character design, rules, scores, and challenges.",
+      project: ar ? "لعبة بشخصيات ونقاط وتحديات" : "A game with characters, scores, and challenges",
     };
   }
   return {
     title: ar ? "باني مشاريع Python" : "Python Project Builder",
-    text: ar ? "طفلك جاهز للانتقال من الفكرة إلى كتابة كود حقيقي وحل الأخطاء خطوة بخطوة." : "Your learner is ready to move from ideas to real code and step-by-step debugging.",
-    project: ar ? "المشروع المقترح: لعبة نصية أو أداة ذكية صغيرة." : "Suggested project: a text game or a useful mini tool.",
+    text: ar
+      ? "هذا المسار مناسب لكتابة كود Python حقيقي وبناء مشروع عملي، ويمكن دمج اهتمامات الطفل في البيانات أو الذكاء الاصطناعي بصورة مناسبة للمستوى."
+      : "This path is suited to writing real Python and building a practical project, with the learner's interests in data or AI introduced at the right level.",
+    project: ar ? "Quiz أو لعبة نصية أو أداة صغيرة" : "A quiz, text game, or useful mini tool",
   };
 }
 
@@ -380,10 +388,10 @@ export default function KidsCodingHubPage({ language }: { language: Language }) 
       question: ar ? "كم عمر طفلك؟" : "How old is your learner?",
       hint: ar ? "نختار الأدوات وطريقة الشرح حسب المرحلة العمرية." : "We adapt tools and teaching style to the learner's stage.",
       options: [
-        ["5-7", ar ? "5–7 سنوات" : "Ages 5–7"],
-        ["8-10", ar ? "8–10 سنوات" : "Ages 8–10"],
-        ["11-13", ar ? "11–13 سنة" : "Ages 11–13"],
-        ["14+", ar ? "14 سنة فأكثر" : "Ages 14+"],
+        ["6-8", ar ? "6–8 سنوات" : "Ages 6–8"],
+        ["9-11", ar ? "9–11 سنة" : "Ages 9–11"],
+        ["12-14", ar ? "12–14 سنة" : "Ages 12–14"],
+        ["15-18+", ar ? "15–18+ سنة" : "Ages 15–18+"],
       ],
     },
     {
@@ -431,8 +439,8 @@ export default function KidsCodingHubPage({ language }: { language: Language }) 
       ];
 
   const parentMessage = ar
-    ? "أهلًا فاطمة، أريد معرفة المسار المناسب لطفلي.\nالعمر: …\nالدولة: …\nالخبرة السابقة: …\nالاهتمام: …\nالوقت المناسب: …"
-    : "Hello Fatma, I would like to find the right learning path for my child.\nAge: …\nCountry: …\nPrevious experience: …\nInterest: …\nPreferred time: …";
+    ? "مرحبًا أستاذة فاطمة، أود معرفة المسار الأنسب لطفلي في Kids Coding Hub.\n\nالعمر: …\nالدولة/المدينة: …\nالخبرة السابقة: …\nما يحب أن يصنعه: …\nالوقت المناسب للجلسات: …\n\nأرغب في معرفة الخطوة التالية وتفاصيل التسجيل."
+    : "Hello Fatma, I would like to find the best Kids Coding Hub path for my child.\n\nAge: …\nCountry/city: …\nPrevious experience: …\nWhat they would like to make: …\nPreferred session time: …\n\nI would like to know the next step and registration details.";
 
   const schoolMessage = ar
     ? "مرحبًا أستاذة فاطمة، نحن [اسم الجهة] في [الدولة] ونرغب في مناقشة برنامج برمجة أو AI للفئة العمرية [__] وعدد [__] متعلمًا."
@@ -441,6 +449,16 @@ export default function KidsCodingHubPage({ language }: { language: Language }) 
   const orgMessage = ar
     ? `مرحبًا أستاذة فاطمة، أريد مقترحًا مبدئيًا لبرنامج Kids Coding Hub.\nنوع الجهة: ${orgBrief.type}\nالفئة العمرية: ${orgBrief.age}\nالعدد التقريبي: ${orgBrief.size}\nالدولة/المدينة: __\nالموعد المتوقع: __`
     : `Hello Fatma, I would like an initial Kids Coding Hub program proposal.\nOrganization type: ${orgBrief.type}\nAge group: ${orgBrief.age}\nApproximate group size: ${orgBrief.size}\nCountry/city: __\nPreferred date: __`;
+
+  const quizSelection = {
+    age: quizOptions[0].options.find(([value]) => value === quizAnswer.age)?.[1] ?? quizAnswer.age,
+    interest: quizOptions[1].options.find(([value]) => value === quizAnswer.interest)?.[1] ?? quizAnswer.interest,
+    experience: quizOptions[2].options.find(([value]) => value === quizAnswer.experience)?.[1] ?? quizAnswer.experience,
+  };
+
+  const quizBookingMessage = ar
+    ? `مرحبًا أستاذة فاطمة،\n\nأكملت اختبار المسار في Kids Coding Hub وأرغب في تأكيد المستوى والموعد المناسبين لطفلي.\n\nبيانات الطفل:\n- العمر: ${quizSelection.age}\n- ما يحب أن يصنعه: ${quizSelection.interest}\n- الخبرة السابقة: ${quizSelection.experience}\n\nالاقتراح المبدئي:\n- المسار: ${quizResult.title}\n- المشروع: ${quizResult.project}\n\nالدولة/المدينة: …\nالوقت المناسب للجلسات: …`
+    : `Hello Fatma,\n\nI completed the Kids Coding Hub path finder and would like to confirm the right level and schedule for my child.\n\nLearner details:\n- Age: ${quizSelection.age}\n- What they would like to make: ${quizSelection.interest}\n- Previous experience: ${quizSelection.experience}\n\nInitial recommendation:\n- Path: ${quizResult.title}\n- Project: ${quizResult.project}\n\nCountry/city: …\nPreferred session time: …`;
 
   const structuredData = {
     "@context": "https://schema.org",
@@ -559,12 +577,12 @@ export default function KidsCodingHubPage({ language }: { language: Language }) 
 
             <div className="hero-visual" aria-label={ar ? "فاطمة نور، مؤسسة Kids Coding Hub" : "Fatma Nour, founder of Kids Coding Hub"}>
               <div className="photo-dots" aria-hidden="true" />
+              <div className="hero-mascot" aria-hidden="true"><img src={sitePath("/media/kids-coding-hub-robot-cutout.png")} width="2304" height="1536" alt="" /></div>
               <div className="photo-frame">
                 <img src={sitePath("/media/fatma-nour.jpg")} width="720" height="1280" alt={ar ? "فاطمة نور، مدربة البرمجة والذكاء الاصطناعي للأطفال" : "Fatma Nour, coding and AI instructor for kids"} fetchPriority="high" />
                 <div className="photo-caption"><span>{ar ? "معك خطوة بخطوة" : "With you, step by step"}</span><b>Fatma Nour</b></div>
               </div>
-              <div className="hero-logo-card"><Logo /><span>{ar ? "تعليم يصنع ثقة ومشروعًا حقيقيًا" : "Learning that builds confidence and a real project"}</span></div>
-              <div className="floating-badge badge-age"><b>5–16</b><span>{ar ? "سنة" : "years"}</span></div>
+              <div className="floating-badge badge-age"><b>6–18+</b><span>{ar ? "سنة" : "years"}</span></div>
               <div className="floating-badge badge-project"><span>✓</span><b>{ar ? "Project-Based" : "Project-Based"}</b></div>
             </div>
           </div>
@@ -651,8 +669,9 @@ export default function KidsCodingHubPage({ language }: { language: Language }) 
               </>
             ) : (
               <div className="quiz-result" aria-live="polite">
-                <span className="result-icon">✓</span><small>{ar ? "المسار المقترح" : "Suggested path"}</small><h3>{quizResult.title}</h3><p>{quizResult.text}</p><b>{quizResult.project}</b>
-                <a className="button primary" href={waLink(`${ar ? "مرحبًا أستاذة فاطمة، أكملت اختبار Kids Coding Hub وكانت النتيجة" : "Hello Fatma, I completed the Kids Coding Hub path finder and my result was"}: ${quizResult.title}.\n${ar ? "العمر" : "Age"}: ${quizAnswer.age}\n${ar ? "الاهتمام" : "Interest"}: ${quizAnswer.interest}\n${ar ? "الخبرة" : "Experience"}: ${quizAnswer.experience}\n${ar ? "أريد معرفة الخطوة التالية." : "I would like to know the next step."}`)} target="_blank" rel="noreferrer" onClick={() => trackLead("quiz_result")}>{ar ? "ناقشي النتيجة على WhatsApp" : "Discuss on WhatsApp"}<ArrowIcon /></a>
+                <span className="result-icon">✓</span><small>{ar ? "المسار المبدئي المقترح" : "Initial suggested path"}</small><h3>{quizResult.title}</h3><p>{quizResult.text}</p><b>{ar ? `المشروع المقترح: ${quizResult.project}` : `Suggested project: ${quizResult.project}`}</b>
+                <p className="result-note">{ar ? "سيتم تأكيد المستوى والموعد بعد محادثة قصيرة مع ولي الأمر." : "The level and schedule are confirmed after a short parent conversation."}</p>
+                <a className="button primary" href={waLink(quizBookingMessage)} target="_blank" rel="noreferrer" onClick={() => trackLead("quiz_result")}>{ar ? "أرسلي النتيجة لفاطمة" : "Send the result to Fatma"}<ArrowIcon /></a>
                 <button type="button" className="restart-quiz" onClick={() => { setQuizAnswer({ age: "", interest: "", experience: "" }); setQuizStep(0); }}>{ar ? "إعادة الاختبار" : "Start again"}</button>
               </div>
             )}
@@ -740,7 +759,7 @@ export default function KidsCodingHubPage({ language }: { language: Language }) 
           <div className="brief-card">
             <div className="brief-head"><small>{ar ? "طلب مقترح مبدئي" : "Request an initial proposal"}</small><b>{ar ? "3 اختيارات فقط" : "Only three choices"}</b></div>
             <label>{ar ? "نوع الجهة" : "Organization type"}<select value={orgBrief.type} onChange={(event) => setOrgBrief((brief) => ({ ...brief, type: event.target.value }))}><option value="school">{ar ? "مدرسة" : "School"}</option><option value="academy">{ar ? "أكاديمية" : "Academy"}</option><option value="community">{ar ? "مبادرة أو مجتمع" : "Community"}</option><option value="company">{ar ? "شركة" : "Company"}</option></select></label>
-            <label>{ar ? "الفئة العمرية" : "Age group"}<select value={orgBrief.age} onChange={(event) => setOrgBrief((brief) => ({ ...brief, age: event.target.value }))}><option value="5-7">5–7</option><option value="8-11">8–11</option><option value="11-14">11–14</option><option value="12-16">12–16</option><option value="mixed">{ar ? "أعمار متنوعة" : "Mixed ages"}</option></select></label>
+            <label>{ar ? "الفئة العمرية" : "Age group"}<select value={orgBrief.age} onChange={(event) => setOrgBrief((brief) => ({ ...brief, age: event.target.value }))}><option value="6-8">6–8</option><option value="9-11">9–11</option><option value="12-14">12–14</option><option value="15-18+">15–18+</option><option value="mixed">{ar ? "أعمار متنوعة" : "Mixed ages"}</option></select></label>
             <label>{ar ? "العدد التقريبي" : "Approximate group size"}<select value={orgBrief.size} onChange={(event) => setOrgBrief((brief) => ({ ...brief, size: event.target.value }))}><option value="under-10">{ar ? "أقل من 10" : "Under 10"}</option><option value="10-20">10–20</option><option value="21-40">21–40</option><option value="40+">40+</option></select></label>
             <a className="button mint" href={waLink(orgMessage)} target="_blank" rel="noreferrer" onClick={() => trackLead("organization_brief")}>{ar ? "اطلب عرضًا فنيًا وماليًا" : "Request a technical & commercial proposal"}<ArrowIcon /></a>
             <p>{ar ? "ستفتح رسالة جاهزة؛ أضيفي اسم الجهة والمدينة والموعد قبل الإرسال." : "A prepared message will open. Add your organization, location, and date before sending."}</p>
@@ -805,7 +824,7 @@ export default function KidsCodingHubPage({ language }: { language: Language }) 
 
       <footer className="site-footer">
         <div className="footer-main">
-          <div className="footer-brand"><a className="brand" href={sitePath(ar ? "/" : ENGLISH_PATH)}><Logo compact /><span className="brand-type"><b>Kids Coding Hub</b><small>{ar ? "نتعلّم • نبني • نشارك" : "Learn • Build • Share"}</small></span></a><p>{ar ? "تعليم برمجة وذكاء اصطناعي قائم على المشروعات للأطفال من 5 إلى 16 سنة." : "Project-based coding and AI learning for ages 5 to 16."}</p></div>
+          <div className="footer-brand"><a className="brand" href={sitePath(ar ? "/" : ENGLISH_PATH)}><Logo compact /><span className="brand-type"><b>Kids Coding Hub</b><small>{ar ? "نتعلّم • نبني • نشارك" : "Learn • Build • Share"}</small></span></a><p>{ar ? "تعليم برمجة وذكاء اصطناعي قائم على المشروعات للأطفال من 6 إلى 18+ سنة." : "Project-based coding and AI learning for ages 6 to 18+."}</p></div>
           <div className="footer-nav"><b>{ar ? "استكشف" : "Explore"}</b><a href="#programs">{ar ? "المسارات" : "Programs"}</a><a href="#path-finder">{ar ? "اختبار المسار" : "Path finder"}</a><a href="#schools">{ar ? "للمدارس" : "For schools"}</a><a href="#about">{ar ? "عن فاطمة" : "About Fatma"}</a></div>
           <div className="footer-nav"><b>{ar ? "تابعنا" : "Follow"}</b><ExternalLink href={SOCIAL.instagram}>Instagram</ExternalLink><ExternalLink href={SOCIAL.facebook}>Facebook</ExternalLink><ExternalLink href={SOCIAL.youtube}>YouTube</ExternalLink><ExternalLink href={SOCIAL.linkedin}>LinkedIn</ExternalLink></div>
           <div className="footer-contact"><b>{ar ? "جاهزة للبداية؟" : "Ready to begin?"}</b><p>{ar ? "أرسلي العمر والهدف والدولة." : "Share the age, goal, and country."}</p><a href={waLink(parentMessage)} target="_blank" rel="noreferrer">WhatsApp<ArrowIcon /></a></div>
