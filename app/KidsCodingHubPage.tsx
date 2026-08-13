@@ -90,6 +90,8 @@ const programs = [
   },
 ];
 
+const coursePageSlugs = ["scratchjr-6-8", "digital-storytellers-8-10", "scratch-game-maker-10-13", "python-project-builder-14-18"];
+
 const testimonials = [
   {
     quoteAr: "بصراحة كلها دورة ممتازة وممتعة.",
@@ -624,7 +626,7 @@ export default function KidsCodingHubPage({ language }: { language: Language }) 
                 <div className="program-detail"><small>{ar ? "ما سيتقنه" : "Core outcome"}</small><b>{ar ? program.outcomeAr : program.outcomeEn}</b></div>
                 <div className="program-detail"><small>{ar ? "المشروع النهائي" : "Final project"}</small><b>{ar ? program.projectAr : program.projectEn}</b></div>
                 <div className="skill-list">{program.skills.map((skill) => <span key={skill}>{skill}</span>)}</div>
-                <a href="#path-finder">{ar ? "اطلبي تقييم المستوى المناسب" : "Request the right level assessment"}<ArrowIcon /></a>
+                <a href={sitePath(ar ? `/courses/${coursePageSlugs[index]}/` : `${ENGLISH_PATH}courses/${coursePageSlugs[index]}/`)}>{ar ? "شاهدي تفاصيل الـ Level" : "View level details"}<ArrowIcon /></a>
               </article>
             ))}
           </div>
