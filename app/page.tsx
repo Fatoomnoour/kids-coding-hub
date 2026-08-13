@@ -3,8 +3,8 @@ import KidsCodingHubPage from "./KidsCodingHubPage";
 import { absoluteSiteUrl, ENGLISH_PATH } from "./site-config";
 
 export const metadata: Metadata = {
-  title: "Kids Coding Hub | تعليم البرمجة والذكاء الاصطناعي للأطفال",
-  description: "مسارات Scratch وPython والذكاء الاصطناعي للأطفال من 5 إلى 16 سنة، بتعليم مباشر قائم على المشروعات مع فاطمة نور. أونلاين في مصر والخليج.",
+  title: "تعليم البرمجة للأطفال أونلاين",
+  description: "برنامج عربي عملي لمدة 3 أشهر و24 جلسة Live، يساعد الأطفال من 5 إلى 16 سنة على بناء لعبة أو قصة تفاعلية أو مشروع Python مع متابعة واضحة لولي الأمر.",
   keywords: [
     "تعليم البرمجة للأطفال",
     "كورس Scratch للأطفال",
@@ -28,15 +28,15 @@ export const metadata: Metadata = {
     locale: "ar_EG",
     alternateLocale: "en_US",
     url: absoluteSiteUrl("/"),
-    title: "Kids Coding Hub | من الفضول إلى أول مشروع",
-    description: "برمجة وذكاء اصطناعي للأطفال بطريقة بسيطة، عملية، وقائمة على المشروعات.",
+    title: "Kids Coding Hub | من فضول طفلك إلى أول مشروع",
+    description: "3 أشهر و24 جلسة Live لتعليم Scratch وPython للأطفال بطريقة عملية قائمة على المشروعات، مع متابعة واضحة لولي الأمر.",
     siteName: "Kids Coding Hub",
     images: [{ url: absoluteSiteUrl("/media/kids-coding-hub-og.jpg"), width: 1200, height: 630, alt: "Kids Coding Hub with Fatma Nour" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Kids Coding Hub",
-    description: "تعليم برمجة وذكاء اصطناعي قائم على المشروعات للأطفال من 5 إلى 16 سنة.",
+    description: "تعليم برمجة وذكاء اصطناعي قائم على المشروعات للأطفال من 5 إلى 16 سنة، مع برنامج واضح ومشروع نهائي.",
     images: [absoluteSiteUrl("/media/kids-coding-hub-og.jpg")],
   },
 };

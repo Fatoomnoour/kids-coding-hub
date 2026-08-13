@@ -25,56 +25,68 @@ const programs = [
     ageEn: "Ages 5–7",
     titleAr: "مستكشف ScratchJr",
     titleEn: "ScratchJr Explorer",
-    introAr: "أول خطوة ممتعة لفهم التسلسل والحركة وصناعة قصة تفاعلية.",
-    introEn: "A playful first step into sequencing, motion, and interactive stories.",
+    introAr: "بداية هادئة لفهم التسلسل والحركة وصناعة قصة تفاعلية.",
+    introEn: "A gentle first step into sequencing, motion, and interactive stories.",
     outcomeAr: "يفكر بالخطوات ويشرح فكرته بثقة",
     outcomeEn: "Think in steps and explain ideas with confidence",
     projectAr: "قصة أو لعبة قصيرة من صنع الطفل",
     projectEn: "A short story or game made by the learner",
     skills: ["Stories", "Motion", "Logic"],
     tone: "yellow",
+    statusAr: "متاح حاليًا",
+    statusEn: "Open in the next cohort",
+    available: true,
   },
   {
-    ageAr: "8–11 سنة",
-    ageEn: "Ages 8–11",
+    ageAr: "7–9 سنوات",
+    ageEn: "Ages 7–9",
+    titleAr: "Digital Storytellers",
+    titleEn: "Digital Storytellers",
+    introAr: "نبني Animation أو Mini Game من خيال الطفل إلى شاشة تفاعلية.",
+    introEn: "Turn a child's imagination into an animation or a small interactive game.",
+    outcomeAr: "يصمم المشاهد ويربط الأحداث بالتجربة",
+    outcomeEn: "Design scenes and connect events to interaction",
+    projectAr: "Animation أو Mini Game",
+    projectEn: "An animation or mini game",
+    skills: ["Animation", "Stories", "Events"],
+    tone: "orange",
+    statusAr: "قريبًا / قائمة انتظار",
+    statusEn: "Coming soon / Waitlist",
+    available: false,
+  },
+  {
+    ageAr: "9–12 سنة",
+    ageEn: "Ages 9–12",
     titleAr: "صانع ألعاب Scratch",
     titleEn: "Scratch Game Maker",
-    introAr: "من فكرة على الورق إلى لعبة تعمل ويمكن مشاركتها مع العائلة.",
-    introEn: "From an idea on paper to a working game worth sharing.",
-    outcomeAr: "يستخدم الأحداث والشروط والتكرار",
-    outcomeEn: "Use events, conditions, and loops",
-    projectAr: "لعبة كاملة بشخصيات ونقاط وتحديات",
-    projectEn: "A complete game with characters, scores, and challenges",
+    introAr: "من فكرة على الورق إلى لعبة بشخصيات ونقاط وتحديات.",
+    introEn: "From an idea on paper to a game with characters, scores, and challenges.",
+    outcomeAr: "يستخدم الأحداث والشروط والتكرار ويصلح الأخطاء",
+    outcomeEn: "Use events, conditions, loops, and debugging",
+    projectAr: "لعبة كاملة من تصميم الطفل",
+    projectEn: "A complete game designed by the learner",
     skills: ["Games", "Loops", "Creativity"],
-    tone: "orange",
+    tone: "blue",
+    statusAr: "قريبًا / قائمة انتظار",
+    statusEn: "Coming soon / Waitlist",
+    available: false,
   },
   {
-    ageAr: "11–14 سنة",
-    ageEn: "Ages 11–14",
+    ageAr: "13–16 سنة",
+    ageEn: "Ages 13–16",
     titleAr: "باني مشاريع Python",
     titleEn: "Python Project Builder",
-    introAr: "انتقال من البرمجة المرئية إلى كتابة كود حقيقي بمشروعات واضحة.",
-    introEn: "Move from visual blocks to real code through clear projects.",
-    outcomeAr: "يكتب كودًا وينظمه ويحل أخطاءه",
-    outcomeEn: "Write, organize, and debug real code",
-    projectAr: "لعبة نصية أو أداة ذكية صغيرة",
-    projectEn: "A text game or a useful mini tool",
+    introAr: "نكتب كودًا حقيقيًا ونبني Quiz أو لعبة نصية أو أداة صغيرة.",
+    introEn: "Write real code and build a quiz, text game, or useful mini tool.",
+    outcomeAr: "ينظم الكود ويختبر فكرته ويشرح مشروعه",
+    outcomeEn: "Organize code, test ideas, and explain a project",
+    projectAr: "Quiz أو لعبة نصية أو أداة صغيرة",
+    projectEn: "A quiz, text game, or useful mini tool",
     skills: ["Python", "Problem Solving", "Debugging"],
-    tone: "blue",
-  },
-  {
-    ageAr: "12–16 سنة",
-    ageEn: "Ages 12–16",
-    titleAr: "مختبر Python والـAI",
-    titleEn: "Python & AI Lab",
-    introAr: "تجارب مبسطة تربط البيانات والذكاء الاصطناعي بمشكلات من الواقع.",
-    introEn: "Friendly experiments connecting data and AI to real-world problems.",
-    outcomeAr: "يفهم كيف تعمل النماذج ويستخدمها بوعي",
-    outcomeEn: "Understand how models work and use them responsibly",
-    projectAr: "تطبيق بيانات أو نموذج AI مبسط",
-    projectEn: "A data app or an approachable AI prototype",
-    skills: ["AI", "Data", "Responsible Tech"],
     tone: "mint",
+    statusAr: "قريبًا / قائمة انتظار",
+    statusEn: "Coming soon / Waitlist",
+    available: false,
   },
 ];
 
@@ -174,34 +186,64 @@ const technicalProof = [
 
 const faqs = [
   {
-    qAr: "هل يحتاج طفلي إلى خبرة سابقة؟",
+    qAr: "هل يحتاج الطفل إلى خبرة سابقة؟",
     qEn: "Does my child need prior experience?",
-    aAr: "لا. نبدأ من مستوى الطفل الحالي، ونستخدم اللعب والمشروعات قبل الانتقال إلى مفاهيم أكثر تقدّمًا.",
-    aEn: "No. We start at the learner's current level and use play and projects before introducing more advanced ideas.",
+    aAr: "لا. نبدأ من المستوى الحقيقي للطفل، ونقترح الأداة والمشروع المناسبين لعمره واهتمامه.",
+    aEn: "No. We start from the learner's real level and suggest the right tool and project for their age and interests.",
   },
   {
-    qAr: "هل التدريب أونلاين أم حضوري؟",
-    qEn: "Is training online or in person?",
-    aAr: "المسارات الفردية والجماعية متاحة أونلاين. ويمكن الاتفاق على ورش حضورية للمدارس والأكاديميات حسب الموقع والجدول.",
-    aEn: "Individual and small-group tracks are available online. In-person workshops can be arranged with schools and academies by location and schedule.",
+    qAr: "هل الجلسات Live أم Recorded؟",
+    qEn: "Are the sessions live or recorded?",
+    aAr: "البرنامج الأساسي Live أونلاين. وتتوفر مواد قصيرة للمراجعة بين اللقاءات، وليست بديلًا عن الجلسة المباشرة.",
+    aEn: "The core program is live online. Short review materials are shared between sessions and do not replace the live lesson.",
   },
   {
-    qAr: "كيف أعرف المسار المناسب؟",
-    qEn: "How do I choose the right track?",
-    aAr: "استخدمي اختبار المسار المجاني في الصفحة؛ يستغرق أقل من دقيقة ويعطيك نقطة بداية مقترحة يمكن مناقشتها قبل الحجز.",
-    aEn: "Use the free path finder on this page. It takes under a minute and gives you a suggested starting point to discuss before booking.",
+    qAr: "كم جلسة في الشهر؟",
+    qEn: "How many sessions are there each month?",
+    aAr: "8 جلسات كل شهر، بمعدل جلستين أسبوعيًا، لمدة 3 أشهر و24 جلسة إجمالًا.",
+    aEn: "There are 8 sessions each month, usually two sessions per week, for 3 months and 24 sessions in total.",
   },
   {
-    qAr: "ماذا ينجز الطفل في نهاية المسار؟",
-    qEn: "What will my child complete?",
-    aAr: "ينتهي كل مسار بمشروع يعمل ويمكن للطفل شرحه ومشاركته؛ قصة أو لعبة أو برنامج Python أو تجربة AI حسب المستوى.",
-    aEn: "Every track ends with a working project the learner can explain and share—a story, game, Python program, or AI experiment depending on level.",
+    qAr: "ماذا ينجز الطفل في نهاية الأشهر الثلاثة؟",
+    qEn: "What will my child complete after three months?",
+    aAr: "يصل الطفل إلى مشروع نهائي قابل للعرض والشرح: لعبة أو قصة تفاعلية أو مشروع Python بحسب المسار.",
+    aEn: "The learner completes a presentable, explainable final project: a game, interactive story, or Python project depending on the track.",
   },
   {
-    qAr: "هل يمكن تصميم برنامج خاص لمدرسة أو Summer Camp؟",
-    qEn: "Can you design a school or summer-camp program?",
-    aAr: "نعم. يُصمم البرنامج حسب الأعمار والعدد والساعات وأهداف الجهة، مع خطة محتوى ومخرجات قابلة للقياس.",
-    aEn: "Yes. Programs are tailored to age, group size, duration, and organizational goals, with a clear curriculum and measurable outcomes.",
+    qAr: "ماذا يحدث عند الغياب؟",
+    qEn: "What happens if a learner misses a session?",
+    aAr: "نرسل مواد المراجعة ونوضح ما يجب تعويضه، وتُناقش أي جلسة تعويض حسب المجموعة والموعد المتاح.",
+    aEn: "We share review material and explain what to catch up on. A make-up session can be discussed based on the group and schedule.",
+  },
+  {
+    qAr: "ما الأجهزة المطلوبة؟",
+    qEn: "What devices are required?",
+    aAr: "يحتاج الطفل إلى جهاز كمبيوتر أو لابتوب واتصال إنترنت مستقر، مع كاميرا وميكروفون للجلسة المباشرة.",
+    aEn: "A computer or laptop, stable internet, and a camera and microphone for live sessions are required.",
+  },
+  {
+    qAr: "كيف يتم الدفع؟",
+    qEn: "How does payment work?",
+    aAr: "بعد اختبار المسار ومعرفة الدولة والموعد، نرسل تفاصيل الدفع وسياسة الحضور والاسترداد بوضوح قبل تأكيد المقعد.",
+    aEn: "After the path check and confirming country and schedule, we send payment, attendance, and refund details before confirming a place.",
+  },
+  {
+    qAr: "هل يمكن الدفع على دفعات؟",
+    qEn: "Can I pay in installments?",
+    aAr: "نعم، يمكن دفع البرنامج كاملًا أو على ثلاث دفعات شهرية محددة، وتُرسل التفاصيل حسب الدولة والعملة.",
+    aEn: "Yes. The program can be paid in full or in three specified monthly installments; details depend on country and currency.",
+  },
+  {
+    qAr: "متى يتم تأكيد المقعد؟",
+    qEn: "When is the place confirmed?",
+    aAr: "لا يتم تأكيد المقعد إلا بعد الاتفاق على المسار والموعد ووصول الدفع والتحقق منه.",
+    aEn: "A place is confirmed only after the track and schedule are agreed and payment is received and verified.",
+  },
+  {
+    qAr: "هل يمكن تصميم برنامج للمدرسة؟",
+    qEn: "Can you design a program for a school?",
+    aAr: "نعم. يمكن تصميم ورشة أو برنامج للمدارس والأكاديميات حسب الأعمار والعدد والهدف والوقت المتاح.",
+    aEn: "Yes. Workshops and programs can be tailored for schools and academies around age, group size, goals, and time.",
   },
 ];
 
@@ -303,7 +345,7 @@ export default function KidsCodingHubPage({ language }: { language: Language }) 
   }, [language, ar]);
 
   useEffect(() => {
-    const ids = ["home", "paths", "programs", "method", "results", "schools", "about", "content", "faq"];
+    const ids = ["home", "paths", "programs", "method", "parents", "registration", "results", "schools", "about", "content", "faq"];
     const observer = new IntersectionObserver(
       (entries) => {
         const visible = entries.filter((entry) => entry.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
@@ -372,6 +414,8 @@ export default function KidsCodingHubPage({ language }: { language: Language }) 
     ? [
         ["المسارات", "programs"],
         ["طريقتنا", "method"],
+        ["الآباء", "parents"],
+        ["المدونة", "content"],
         ["النتائج", "results"],
         ["للمدارس", "schools"],
         ["عن فاطمة", "about"],
@@ -379,14 +423,16 @@ export default function KidsCodingHubPage({ language }: { language: Language }) 
     : [
         ["Programs", "programs"],
         ["Method", "method"],
+        ["For parents", "parents"],
+        ["Blog", "content"],
         ["Results", "results"],
         ["For schools", "schools"],
         ["About Fatma", "about"],
       ];
 
   const parentMessage = ar
-    ? "مرحبًا أستاذة فاطمة، أريد معرفة المسار المناسب لطفلي.\nالعمر: __\nالخبرة السابقة: __\nالدولة: __"
-    : "Hello Fatma, I would like to find the right learning path for my child.\nAge: __\nPrevious experience: __\nCountry: __";
+    ? "أهلًا فاطمة، أريد معرفة المسار المناسب لطفلي.\nالعمر: …\nالدولة: …\nالخبرة السابقة: …\nالاهتمام: …\nالوقت المناسب: …"
+    : "Hello Fatma, I would like to find the right learning path for my child.\nAge: …\nCountry: …\nPrevious experience: …\nInterest: …\nPreferred time: …";
 
   const schoolMessage = ar
     ? "مرحبًا أستاذة فاطمة، نحن [اسم الجهة] في [الدولة] ونرغب في مناقشة برنامج برمجة أو AI للفئة العمرية [__] وعدد [__] متعلمًا."
@@ -407,7 +453,7 @@ export default function KidsCodingHubPage({ language }: { language: Language }) 
         url: absoluteSiteUrl(ar ? "/" : ENGLISH_PATH),
         logo: absoluteSiteUrl("/media/kids-coding-hub-logo.png"),
         founder: { "@id": absoluteSiteUrl("/#fatma-nour") },
-        sameAs: [SOCIAL.facebook, SOCIAL.instagram, SOCIAL.youtube, SOCIAL.blog],
+        sameAs: [SOCIAL.linkedin, SOCIAL.github, SOCIAL.youtube, SOCIAL.blog],
         areaServed: ["Egypt", "Saudi Arabia", "United Arab Emirates", "Gulf Cooperation Council"],
         knowsAbout: ["ScratchJr", "Scratch", "Python", "Artificial Intelligence", "Coding for kids", "STEAM education"],
       },
@@ -419,8 +465,19 @@ export default function KidsCodingHubPage({ language }: { language: Language }) 
         image: absoluteSiteUrl("/media/fatma-nour.jpg"),
         jobTitle: "Founder & Coding and AI Instructor",
         worksFor: { "@id": absoluteSiteUrl("/#organization") },
-        sameAs: [SOCIAL.linkedin, SOCIAL.github, SOCIAL.instagram, SOCIAL.facebook, SOCIAL.youtube],
+        sameAs: [SOCIAL.linkedin, SOCIAL.github, SOCIAL.instagram, SOCIAL.youtube],
         knowsAbout: ["Scratch", "Python", "Artificial Intelligence", "Data Engineering", "Curriculum Design"],
+      },
+      {
+        "@type": "Course",
+        "@id": absoluteSiteUrl("/#core-program"),
+        name: ar ? "برنامج Kids Coding Hub الأساسي" : "Kids Coding Hub Core Program",
+        description: ar ? "برنامج عربي عملي لمدة 3 أشهر و24 جلسة Live لبناء مشروع برمجي مناسب لعمر الطفل ومستواه." : "A practical 3-month, 24-live-session program for building a coding project suited to the learner's age and level.",
+        provider: { "@id": absoluteSiteUrl("/#organization") },
+        educationalLevel: "Beginner to intermediate",
+        teaches: ["ScratchJr", "Scratch", "Python", "Project-based learning"],
+        timeRequired: "P3M",
+        inLanguage: ["ar", "en"],
       },
       {
         "@type": "WebSite",
@@ -429,6 +486,15 @@ export default function KidsCodingHubPage({ language }: { language: Language }) 
         url: absoluteSiteUrl("/"),
         inLanguage: ["ar", "en"],
         publisher: { "@id": absoluteSiteUrl("/#organization") },
+      },
+      {
+        "@type": "FAQPage",
+        "@id": absoluteSiteUrl("/#faq"),
+        mainEntity: faqs.map((faq) => ({
+          "@type": "Question",
+          name: ar ? faq.qAr : faq.qEn,
+          acceptedAnswer: { "@type": "Answer", text: ar ? faq.aAr : faq.aEn },
+        })),
       },
     ],
   };
@@ -476,17 +542,18 @@ export default function KidsCodingHubPage({ language }: { language: Language }) 
                 {ar ? <>من فضول طفلك…<br />إلى <span>أول مشروع</span><br />يصنعه بنفسه.</> : <>From curiosity…<br />to a <span>first project</span><br />they build themselves.</>}
               </h1>
               <p className="hero-description">
-                {ar ? "في Kids Coding Hub يتعلم الطفل Scratch وPython والذكاء الاصطناعي بطريقة بسيطة، عملية، وقائمة على المشروعات—مع فاطمة نور، مدربة برمجة وAI بخبرة أكثر من 4 سنوات." : "At Kids Coding Hub, children learn Scratch, Python, and AI through clear, hands-on, project-based learning with Fatma Nour, a coding and AI instructor with 4+ years of experience."}
+                {ar ? "برنامج عربي عملي لمدة 3 أشهر و24 جلسة Live، يساعد الطفل على بناء لعبة أو قصة تفاعلية أو مشروع Python مناسب لعمره ومستواه، مع متابعة واضحة لولي الأمر." : "A practical 3-month Arabic-first program with 24 live sessions, helping each learner build a game, interactive story, or Python project suited to their age and level—with clear parent follow-up."}
               </p>
               <div className="hero-actions">
                 <a className="button primary" href="#path-finder" onClick={() => trackLead("hero_parent")}>{ar ? "اكتشفي المسار المناسب" : "Find the right path"}<ArrowIcon /></a>
-                <a className="button secondary" href="#schools" onClick={() => trackLead("hero_organization")}>{ar ? "برنامج لمدرستك" : "Program for your school"}</a>
+                <a className="button secondary" href={waLink(parentMessage)} target="_blank" rel="noreferrer" onClick={() => trackLead("hero_whatsapp")}>{ar ? "تحدثي مع فاطمة على WhatsApp" : "Talk to Fatma on WhatsApp"}</a>
               </div>
               <p className="microcopy"><CheckIcon />{ar ? "اختبار مجاني • أقل من دقيقة • بدون تسجيل" : "Free • Under one minute • No signup"}</p>
-              <div className="hero-proof" aria-label={ar ? "مؤشرات الثقة" : "Trust signals"}>
-                <div><b>+4</b><span>{ar ? "سنوات خبرة" : "Years teaching"}</span></div>
-                <div><b>18K+</b><span>{ar ? "مجتمع مهني" : "Professional community"}</span></div>
-                <div><b>100%</b><span>{ar ? "شرح ممتع وبسيط*" : "Fun & clear teaching*"}</span></div>
+              <div className="hero-proof" aria-label={ar ? "تفاصيل البرنامج" : "Program details"}>
+                <div><b>3</b><span>{ar ? "أشهر" : "Months"}</span></div>
+                <div><b>24</b><span>{ar ? "جلسة Live" : "Live sessions"}</span></div>
+                <div><b>5–8</b><span>{ar ? "طلاب في المجموعة" : "Learners per group"}</span></div>
+                <div><b>1</b><span>{ar ? "مشروع نهائي" : "Final project"}</span></div>
               </div>
             </div>
 
@@ -533,14 +600,28 @@ export default function KidsCodingHubPage({ language }: { language: Language }) 
             {programs.map((program, index) => (
               <article className={`program-card ${program.tone}`} key={program.titleEn}>
                 <div className="program-top"><span>{ar ? program.ageAr : program.ageEn}</span><b>0{index + 1}</b></div>
+                <span className={`program-status ${program.available ? "available" : "waitlist"}`}>{ar ? program.statusAr : program.statusEn}</span>
                 <h3>{ar ? program.titleAr : program.titleEn}</h3>
                 <p>{ar ? program.introAr : program.introEn}</p>
                 <div className="program-detail"><small>{ar ? "ما سيتقنه" : "Core outcome"}</small><b>{ar ? program.outcomeAr : program.outcomeEn}</b></div>
                 <div className="program-detail"><small>{ar ? "المشروع النهائي" : "Final project"}</small><b>{ar ? program.projectAr : program.projectEn}</b></div>
                 <div className="skill-list">{program.skills.map((skill) => <span key={skill}>{skill}</span>)}</div>
-                <a href="#path-finder">{ar ? "اختاري هذا المسار" : "Explore this path"}<ArrowIcon /></a>
+                <a href="#path-finder">{ar ? "أريد معرفة إن كان هذا المسار مناسبًا لطفلي" : "Check whether this path fits my child"}<ArrowIcon /></a>
               </article>
             ))}
+          </div>
+        </section>
+
+        <section className="program-plan-section" id="program-plan" aria-labelledby="program-plan-title">
+          <div className="section-intro centered narrow">
+            <span className="section-kicker">{ar ? "البرنامج الأساسي" : "The core program"}</span>
+            <h2 id="program-plan-title">{ar ? "رحلة واضحة من أول فكرة إلى مشروع نهائي." : "A clear journey from first idea to final project."}</h2>
+            <p>{ar ? "8 جلسات كل شهر، بمعدل جلستين أسبوعيًا. الجلسات Live، وتوجد مواد قصيرة للمراجعة بين اللقاءات." : "Eight sessions each month, usually two sessions per week. Sessions are live, with short review materials between meetings."}</p>
+          </div>
+          <div className="program-plan-grid">
+            <article><span>01</span><small>{ar ? "الشهر الأول — Explore" : "Month 1 — Explore"}</small><h3>{ar ? "نفهم الأداة والمنطق" : "Understand the tool and logic"}</h3><p>{ar ? "التسلسل، الحركة، الأحداث، والتفاعل عبر Mini Project." : "Sequencing, motion, events, and interaction through a mini project."}</p></article>
+            <article><span>02</span><small>{ar ? "الشهر الثاني — Build" : "Month 2 — Build"}</small><h3>{ar ? "نبني النسخة الأولى" : "Build the first version"}</h3><p>{ar ? "التكرار، الشروط، المتغيرات، التصميم، وDebugging." : "Loops, conditions, variables, design, and debugging."}</p></article>
+            <article><span>03</span><small>{ar ? "الشهر الثالث — Create" : "Month 3 — Create"}</small><h3>{ar ? "نختبر ونشارك" : "Test and share"}</h3><p>{ar ? "تطوير المشروع، الاختبار، العرض، وPortfolio في Demo Day." : "Develop, test, present, and build a portfolio in Demo Day."}</p></article>
           </div>
         </section>
 
@@ -596,6 +677,31 @@ export default function KidsCodingHubPage({ language }: { language: Language }) 
               <div><span>03</span><p><b>{ar ? "نحوّل الخطأ إلى اكتشاف" : "Turn mistakes into discovery"}</b>{ar ? " الطفل يختبر ويصحّح بدل الخوف من الإجابة الخاطئة." : " Learners test and debug instead of fearing wrong answers."}</p></div>
               <div><span>04</span><p><b>{ar ? "ننهي بمشروع يُشارك" : "Finish with something to share"}</b>{ar ? " الإنجاز الحقيقي شيء يعمل ويستطيع الطفل شرحه." : " Real progress is a working project learners can explain."}</p></div>
             </div>
+          </div>
+        </section>
+
+        <section className="parent-benefits-section" id="parents" aria-labelledby="parents-title">
+          <div className="section-intro split">
+            <div><span className="section-kicker">{ar ? "للآباء والأمهات" : "For parents"}</span><h2 id="parents-title">{ar ? "تعرفين ماذا يحدث بعد كل جلسة." : "Know what happens after every session."}</h2></div>
+            <p>{ar ? "الطفل هو المتعلم، لكن ولي الأمر شريك في الرحلة. لذلك نوضح المخرجات والمتابعة والخطوة التالية دون وعود مبالغ فيها." : "The child is the learner, but the parent is a partner in the journey. We make outcomes, follow-up, and next steps clear without exaggerated promises."}</p>
+          </div>
+          <div className="parent-benefits-table" role="table" aria-label={ar ? "ما يحصل عليه الطالب والأسرة" : "What the learner and family receive"}>
+            <div className="parent-benefit-row table-head" role="row"><b>{ar ? "ما يحصل عليه الطالب والأسرة" : "What the learner and family receive"}</b><b>{ar ? "التفاصيل" : "Details"}</b></div>
+            <div className="parent-benefit-row" role="row"><b>{ar ? "24 جلسة Live" : "24 live sessions"}</b><span>{ar ? "8 جلسات شهريًا لمدة 3 أشهر" : "8 sessions per month for 3 months"}</span></div>
+            <div className="parent-benefit-row" role="row"><b>{ar ? "مجموعة صغيرة" : "Small group"}</b><span>{ar ? "5–8 طلاب متقاربين في العمر والمستوى" : "5–8 learners close in age and level"}</span></div>
+            <div className="parent-benefit-row" role="row"><b>{ar ? "مواد مراجعة" : "Review material"}</b><span>{ar ? "فيديوهات قصيرة أو ملفات بعد الجلسات" : "Short videos or files after sessions"}</span></div>
+            <div className="parent-benefit-row" role="row"><b>{ar ? "مشروع نهائي" : "Final project"}</b><span>{ar ? "نتيجة ملموسة قابلة للعرض والشرح" : "A tangible result that can be shown and explained"}</span></div>
+            <div className="parent-benefit-row" role="row"><b>{ar ? "متابعة ودعم" : "Follow-up and support"}</b><span>{ar ? "ملاحظة بعد الجلسة، تقرير تقدم شهري، وتواصل مع ولي الأمر عبر WhatsApp" : "Post-session notes, a monthly progress update, and WhatsApp parent communication"}</span></div>
+          </div>
+        </section>
+
+        <section className="registration-section" id="registration" aria-labelledby="registration-title">
+          <div className="registration-card">
+            <span className="section-kicker light">{ar ? "التسجيل والدفع" : "Registration & payment"}</span>
+            <h2 id="registration-title">{ar ? "تفاصيل التسجيل والدفع تُرسل لكِ بوضوح قبل تأكيد المقعد." : "Registration and payment details are shared clearly before a place is confirmed."}</h2>
+            <p>{ar ? "بعد اختبار المسار ومعرفة الدولة والموعد المناسب، نرسل لكِ تفاصيل البرنامج، طريقة التحويل المتاحة، وسياسة الحضور والاسترداد. يمكن دفع البرنامج كاملًا أو على ثلاث دفعات شهرية محددة. لا يتم تأكيد المقعد إلا بعد وصول الدفع والتحقق منه." : "After the path check and confirming country and schedule, we send the program details, available payment method, and attendance and refund policy. You can pay in full or in three specified monthly installments. A place is confirmed only after payment is received and verified."}</p>
+            <div className="registration-actions"><a className="button primary" href={waLink(parentMessage)} target="_blank" rel="noreferrer" onClick={() => trackLead("registration_details")}>{ar ? "اطلبي تفاصيل التسجيل" : "Request registration details"}<ArrowIcon /></a><a className="text-cta light" href={waLink(parentMessage)} target="_blank" rel="noreferrer">{ar ? "تحدثي مع فاطمة" : "Talk to Fatma"}<ArrowIcon /></a></div>
+            <small>{ar ? "لا نعرض سعرًا عامًا لأن المسار والعملة والموعد يختلفون حسب الدولة والمستوى." : "We do not publish a general price because track, currency, and schedule vary by country and level."}</small>
           </div>
         </section>
 
@@ -692,7 +798,7 @@ export default function KidsCodingHubPage({ language }: { language: Language }) 
 
         <section className="final-cta" id="contact" aria-labelledby="contact-title">
           <div className="final-logo"><Logo /></div>
-          <div><span>{ar ? "الخطوة الأولى لا تحتاج قرارًا كبيرًا" : "The first step does not need to feel big"}</span><h2 id="contact-title">{ar ? "ابدئي باختبار دقيقة، أو أخبرينا عن طفلك." : "Start with a one-minute check, or tell us about your learner."}</h2><p>{ar ? "سنحدد معًا البداية الأنسب بدون ضغط أو وعود مبالغ فيها." : "We will choose a sensible starting point together—without pressure or exaggerated promises."}</p></div>
+          <div><span>{ar ? "خطوة واضحة بدون ضغط" : "A clear next step without pressure"}</span><h2 id="contact-title">{ar ? "لا يحتاج طفلك إلى بداية مثالية؛ يحتاج إلى مشروع مناسب وخطوة واضحة." : "Your child does not need a perfect start; they need the right project and a clear next step."}</h2><p>{ar ? "أرسلي العمر والدولة وما يحب طفلك أن يصنعه، وسنقترح المسار الأول المناسب." : "Share the age, country, and what your child would like to make, and we will suggest a suitable first path."}</p></div>
           <div className="final-actions"><a className="button primary" href="#path-finder">{ar ? "اختبار المسار" : "Find a path"}<ArrowIcon /></a><a className="button secondary" href={waLink(parentMessage)} target="_blank" rel="noreferrer" onClick={() => trackLead("final_parent")}>WhatsApp</a></div>
         </section>
       </main>

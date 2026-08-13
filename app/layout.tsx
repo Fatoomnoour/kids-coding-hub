@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     default: "Kids Coding Hub | Coding & AI for Kids",
     template: "%s | Kids Coding Hub",
   },
-  description: "Project-based coding and AI learning for children with Fatma Nour.",
+  description: "Arabic-first, project-based coding and AI learning for children ages 5–16 with Fatma Nour.",
   authors: [{ name: "Fatma Nour", url: "https://www.linkedin.com/in/fatma-nour-ai-trainer" }],
   creator: "Fatma Nour",
   publisher: "Kids Coding Hub",
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="ar" dir="rtl">
+    <html lang="ar" dir="rtl" itemScope itemType="https://schema.org/WebSite">
       <body>
         {children}
         <Analytics />
