@@ -289,16 +289,21 @@ img { max-width: 100%; }
 .photo-caption { position: absolute; z-index: 2; inset-inline: 26px; bottom: 23px; display: grid; gap: 4px; color: white; }
 .photo-caption span { color: rgba(255, 255, 255, .78); font-size: 12px; font-weight: 700; }
 .photo-caption b { font: 800 22px/1 "Inter", sans-serif; }
-.hero-mascot {
-  position: absolute;
-  z-index: 2;
-  left: -112px;
-  bottom: 32px;
-  width: 230px;
-  height: 260px;
+.hero-mascot-inline {
+  width: 178px;
+  height: 112px;
+  margin-top: 5px;
+  margin-inline-start: auto;
+  display: grid;
+  place-items: end center;
+  overflow: hidden;
+  border: 1px solid rgba(18, 72, 238, .12);
+  border-radius: 30px;
+  background: linear-gradient(135deg, rgba(255, 201, 47, .2), rgba(18, 72, 238, .07));
+  box-shadow: 0 12px 28px rgba(18, 72, 238, .1);
   pointer-events: none;
 }
-.hero-mascot img { width: 340px; max-width: none; height: auto; transform: translateX(-22px); }
+.hero-mascot-inline img { width: 244px; max-width: none; height: auto; transform: translate(-2px, 12px); }
 .floating-badge {
   position: absolute;
   z-index: 6;
@@ -870,6 +875,6 @@ img { max-width: 100%; }
 @media (max-width: 700px) {
   .hero-proof { grid-template-columns: repeat(2, 1fr); }
   .hero-proof > div:nth-child(3) { border-inline-start: 0; padding-inline-start: 0; }
-  .hero-mascot { left: -74px; bottom: 44px; width: 150px; height: 176px; }
-  .hero-mascot img { width: 230px; transform: translateX(-18px); }
+  .hero-mascot-inline { width: 145px; height: 96px; margin-top: 0; border-radius: 24px; }
+  .hero-mascot-inline img { width: 210px; transform: translate(-2px, 9px); }
 }
