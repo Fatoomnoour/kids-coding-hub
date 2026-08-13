@@ -87,7 +87,7 @@ export default async function CoursePage({ params }: { params: Promise<Params> }
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
       <header className="course-topbar">
         <a href={sitePath("/")} className="course-brand" aria-label="Kids Coding Hub — الرئيسية"><img src={sitePath("/media/kids-coding-hub-logo.png")} width="1536" height="1024" alt="Kids Coding Hub" /></a>
-        <nav aria-label="التنقل داخل الصفحة"><a href="#journey">الرحلة</a><a href="#parents">للآباء</a><a href="#faq">الأسئلة</a></nav>
+        <nav aria-label="التنقل داخل الصفحة"><a href="#journey">الرحلة</a><a href="#tools">المهارات</a><a href="#parents">للآباء</a><a href="#faq">الأسئلة</a></nav>
         <a className="course-top-cta" href={whatsappUrl} target="_blank" rel="noreferrer">اسألي عن الـ Level</a>
       </header>
 
@@ -126,6 +126,17 @@ export default async function CoursePage({ params }: { params: Promise<Params> }
         <div className="course-skills-grid">{course.skillsAr.map((skill, index) => <article key={skill}><span>0{index + 1}</span><b>{skill}</b><p>{index === 0 ? "نحوّل الفكرة إلى خطوات بسيطة قابلة للتجربة." : index === 1 ? "نضيف تفاصيل تجعل المشروع حيًا وممتعًا." : index === 2 ? "نربط الأجزاء لتعمل معًا بشكل مفهوم." : "نتعلم الملاحظة والتحسين بدل الخوف من الخطأ."}</p></article>)}</div>
       </section>
 
+      <section className="course-section course-tools-section" id="tools">
+        <div className="course-section-heading centered"><span>المهارات والأدوات</span><h2>ماذا سيستخدم الطفل؟ وما الذي سيخرج به من كل جزء؟</h2><p>نشرح الأداة والغرض والتطبيق العملي بوضوح، حتى تعرفي ما الذي يتعلمه طفلك بعيدًا عن العناوين العامة.</p></div>
+        <div className="course-tools-table-wrap">
+          <table className="course-tools-table">
+            <thead><tr><th>المجال</th><th>الأداة</th><th>تطبيق عملي داخل الجلسات</th><th>الناتج</th></tr></thead>
+            <tbody>{course.toolRows.map((row) => <tr key={row.areaAr}><td><b>{row.areaAr}</b></td><td>{row.toolAr}</td><td>{row.practiceAr}</td><td><span>{row.outcomeAr}</span></td></tr>)}</tbody>
+          </table>
+        </div>
+        <p className="course-tools-note"><CheckIcon />المحتوى يتدرج حسب سرعة الطفل وخبرته؛ لا ننتقل إلى التعقيد قبل أن يصبح التطبيق الحالي مفهومًا.</p>
+      </section>
+
       <section className="course-section course-journey" id="journey">
         <div className="course-section-heading centered"><span>خريطة الـ 3 أشهر</span><h2>كل شهر له هدف واضح، وكل جلسة تقرّب الطفل من مشروعه.</h2><p>24 جلسة Live موزعة على 3 مراحل، مع تطبيق ومراجعة وتطوير مستمر.</p></div>
         <div className="course-months">{course.monthsAr.map((month, index) => <article key={month.label}><div className="course-month-marker"><b>0{index + 1}</b><i /></div><small>{month.label}</small><h3>{month.title}</h3><p>{month.text}</p></article>)}</div>
@@ -144,6 +155,7 @@ export default async function CoursePage({ params }: { params: Promise<Params> }
       <section className="course-section course-faq-section" id="faq">
         <div className="course-section-heading"><span>أسئلة قبل التسجيل</span><h2>إجابات مباشرة تساعدك على اتخاذ القرار.</h2></div>
         <div className="course-faq-list">{course.faqsAr.map((item, index) => <details key={item.q} open={index === 0}><summary>{item.q}<i>+</i></summary><p>{item.a}</p></details>)}</div>
+        <div className="course-faq-cta"><div><span>ما زلتِ تقارنين بين المستويات؟</span><b>أرسلي العمر والخبرة والوقت المناسب، وسنؤكد لكِ الـ Level والمجموعة المتاحة قبل الحجز.</b></div><a href={whatsappUrl} target="_blank" rel="noreferrer" className="course-button primary">اسألي فاطمة الآن <ArrowIcon /></a></div>
       </section>
 
       <section className="course-related-section">
