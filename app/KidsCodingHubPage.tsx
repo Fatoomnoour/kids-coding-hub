@@ -198,16 +198,16 @@ const faqs = [
     aEn: "The core program is live online. Short review materials are shared between sessions and do not replace the live lesson.",
   },
   {
-    qAr: "كم جلسة في الشهر؟",
-    qEn: "How many sessions are there each month?",
-    aAr: "8 جلسات كل شهر، بمعدل جلستين أسبوعيًا، لمدة 3 أشهر و24 جلسة إجمالًا.",
-    aEn: "There are 8 sessions each month, usually two sessions per week, for 3 months and 24 sessions in total.",
+    qAr: "كم جلسة في كل Level؟",
+    qEn: "How many sessions are in each level?",
+    aAr: "كل Level مدته 3 أشهر ويضم 24 جلسة Live: 8 جلسات شهريًا، بمعدل جلستين أسبوعيًا.",
+    aEn: "Each level lasts 3 months and includes 24 live sessions: 8 sessions per month, usually two sessions per week.",
   },
   {
-    qAr: "ماذا ينجز الطفل في نهاية الأشهر الثلاثة؟",
-    qEn: "What will my child complete after three months?",
-    aAr: "يصل الطفل إلى مشروع نهائي قابل للعرض والشرح: لعبة أو قصة تفاعلية أو مشروع Python بحسب المسار.",
-    aEn: "The learner completes a presentable, explainable final project: a game, interactive story, or Python project depending on the track.",
+    qAr: "ماذا ينجز الطفل في نهاية الـ Level؟",
+    qEn: "What will my child complete at the end of a level?",
+    aAr: "يُنهي الطفل مشروعًا قابلًا للعرض والشرح: لعبة أو قصة تفاعلية أو مشروع Python بحسب الـ Level، ثم نراجع الجاهزية قبل اقتراح المستوى التالي.",
+    aEn: "The learner completes a presentable, explainable project—a game, interactive story, or Python project for that level—then receives a readiness review before the next level is suggested.",
   },
   {
     qAr: "ماذا يحدث عند الغياب؟",
@@ -228,10 +228,10 @@ const faqs = [
     aEn: "After the path check and confirming country and schedule, we send payment, attendance, and refund details before confirming a place.",
   },
   {
-    qAr: "هل يمكن الدفع على دفعات؟",
-    qEn: "Can I pay in installments?",
-    aAr: "نعم، يمكن دفع البرنامج كاملًا أو على ثلاث دفعات شهرية محددة، وتُرسل التفاصيل حسب الدولة والعملة.",
-    aEn: "Yes. The program can be paid in full or in three specified monthly installments; details depend on country and currency.",
+    qAr: "هل يمكن دفع قيمة الـ Level على دفعات؟",
+    qEn: "Can I pay for a level in installments?",
+    aAr: "نعم، يمكن دفع قيمة الـ Level كاملة أو على ثلاث دفعات شهرية محددة. نرسل التفاصيل حسب الدولة والعملة قبل تأكيد المقعد.",
+    aEn: "Yes. A level can be paid in full or in three specified monthly installments. Details are shared by country and currency before a place is confirmed.",
   },
   {
     qAr: "متى يتم تأكيد المقعد؟",
@@ -281,8 +281,8 @@ function CheckIcon() {
 
 function Logo({ compact = false }: { compact?: boolean }) {
   return (
-    <span className={compact ? "logo-crop compact" : "logo-crop"} aria-hidden="true">
-      <img src={sitePath("/media/kids-coding-hub-logo.png")} alt="" width="1024" height="1024" />
+    <span className={compact ? "brand-logo compact" : "brand-logo"} aria-hidden="true">
+      <img src={sitePath("/media/kids-coding-hub-logo.png")} alt="" width="1536" height="1024" />
     </span>
   );
 }
@@ -490,7 +490,7 @@ export default function KidsCodingHubPage({ language }: { language: Language }) 
         "@type": "Course",
         "@id": absoluteSiteUrl("/#core-program"),
         name: ar ? "برنامج Kids Coding Hub الأساسي" : "Kids Coding Hub Core Program",
-        description: ar ? "برنامج عربي عملي لمدة 3 أشهر و24 جلسة Live لبناء مشروع برمجي مناسب لعمر الطفل ومستواه." : "A practical 3-month, 24-live-session program for building a coding project suited to the learner's age and level.",
+        description: ar ? "كل مستوى في Kids Coding Hub رحلة عملية مستقلة لمدة 3 أشهر و24 جلسة Live، تنتهي بمشروع يناسب عمر الطفل ومستواه." : "Each Kids Coding Hub level is a focused 3-month, 24-live-session journey that ends with a project suited to the learner's age and level.",
         provider: { "@id": absoluteSiteUrl("/#organization") },
         educationalLevel: "Beginner to intermediate",
         teaches: ["ScratchJr", "Scratch", "Python", "Project-based learning"],
@@ -526,7 +526,6 @@ export default function KidsCodingHubPage({ language }: { language: Language }) 
         <div className="header-inner">
           <a className="brand" href={`${sitePath(ar ? "/" : ENGLISH_PATH)}#home`} aria-label={ar ? "Kids Coding Hub — الرئيسية" : "Kids Coding Hub — Home"}>
             <Logo compact />
-            <span className="brand-type"><b>Kids Coding Hub</b><small>{ar ? "نتعلّم • نبني • نشارك" : "Learn • Build • Share"}</small></span>
           </a>
 
           <nav className="desktop-nav" aria-label={ar ? "التنقل الرئيسي" : "Main navigation"}>
@@ -560,7 +559,7 @@ export default function KidsCodingHubPage({ language }: { language: Language }) 
                 {ar ? <>من فضول طفلك…<br />إلى <span>أول مشروع</span><br />يصنعه بنفسه.</> : <>From curiosity…<br />to a <span>first project</span><br />they build themselves.</>}
               </h1>
               <p className="hero-description">
-                {ar ? "برنامج عربي عملي لمدة 3 أشهر و24 جلسة Live، يساعد الطفل على بناء لعبة أو قصة تفاعلية أو مشروع Python مناسب لعمره ومستواه، مع متابعة واضحة لولي الأمر." : "A practical 3-month Arabic-first program with 24 live sessions, helping each learner build a game, interactive story, or Python project suited to their age and level—with clear parent follow-up."}
+                {ar ? "مسارات تعليمية متدرجة للأطفال من 6 إلى 18+ سنة. كل Level رحلة مستقلة مدتها 3 أشهر و24 جلسة Live، تنتهي بمشروع مناسب لعمر الطفل ومستواه مع متابعة واضحة لولي الأمر." : "Progressive learning levels for ages 6 to 18+. Each level is a focused 3-month journey with 24 live sessions and a project suited to the learner’s age and level—with clear parent follow-up."}
               </p>
               <div className="hero-actions">
                 <a className="button primary" href="#path-finder" onClick={() => trackLead("hero_parent")}>{ar ? "اكتشفي المسار المناسب" : "Find the right path"}<ArrowIcon /></a>
@@ -568,16 +567,16 @@ export default function KidsCodingHubPage({ language }: { language: Language }) 
               </div>
               <p className="microcopy"><CheckIcon />{ar ? "اختبار مجاني • أقل من دقيقة • بدون تسجيل" : "Free • Under one minute • No signup"}</p>
               <div className="hero-proof" aria-label={ar ? "تفاصيل البرنامج" : "Program details"}>
-                <div><b>3</b><span>{ar ? "أشهر" : "Months"}</span></div>
-                <div><b>24</b><span>{ar ? "جلسة Live" : "Live sessions"}</span></div>
+                <div><b>3</b><span>{ar ? "أشهر لكل Level" : "Months per level"}</span></div>
+                <div><b>24</b><span>{ar ? "جلسة Live لكل Level" : "Live sessions per level"}</span></div>
                 <div><b>5–8</b><span>{ar ? "طلاب في المجموعة" : "Learners per group"}</span></div>
-                <div><b>1</b><span>{ar ? "مشروع نهائي" : "Final project"}</span></div>
+                <div><b>1</b><span>{ar ? "مشروع في نهاية المستوى" : "Project per level"}</span></div>
               </div>
+              <div className="hero-mascot-inline" aria-hidden="true"><img src={sitePath("/media/kids-coding-hub-robot-cutout.png")} width="2304" height="1536" alt="" /></div>
             </div>
 
             <div className="hero-visual" aria-label={ar ? "فاطمة نور، مؤسسة Kids Coding Hub" : "Fatma Nour, founder of Kids Coding Hub"}>
               <div className="photo-dots" aria-hidden="true" />
-              <div className="hero-mascot" aria-hidden="true"><img src={sitePath("/media/kids-coding-hub-robot-cutout.png")} width="2304" height="1536" alt="" /></div>
               <div className="photo-frame">
                 <img src={sitePath("/media/fatma-nour.jpg")} width="720" height="1280" alt={ar ? "فاطمة نور، مدربة البرمجة والذكاء الاصطناعي للأطفال" : "Fatma Nour, coding and AI instructor for kids"} fetchPriority="high" />
                 <div className="photo-caption"><span>{ar ? "معك خطوة بخطوة" : "With you, step by step"}</span><b>Fatma Nour</b></div>
@@ -612,7 +611,7 @@ export default function KidsCodingHubPage({ language }: { language: Language }) 
         <section className="programs-section" id="programs" aria-labelledby="programs-title">
           <div className="section-intro split">
             <div><span className="section-kicker">{ar ? "مسارات التعلّم" : "Learning paths"}</span><h2 id="programs-title">{ar ? "كل عمر له أداة، تحدٍ، ومشروع يناسبه." : "The right tool, challenge, and project for every age."}</h2></div>
-            <p>{ar ? "جلسات مباشرة أونلاين، فردية أو في مجموعة صغيرة. مدة الخطة وعدد اللقاءات يُحددان بعد تقييم المستوى والهدف." : "Live online sessions, one-to-one or in a small group. Track length and session count are set after a level and goal check."}</p>
+            <p>{ar ? "نبدأ من المستوى المناسب لعمر الطفل وخبرته. كل Level مدته 3 أشهر، يضم 24 جلسة Live، وينتهي بمشروع واضح قبل الانتقال للمستوى التالي." : "We begin with the level that fits the learner’s age and experience. Every level runs for 3 months, includes 24 live sessions, and ends with a clear project before progressing."}</p>
           </div>
           <div className="program-grid">
             {programs.map((program, index) => (
@@ -621,10 +620,11 @@ export default function KidsCodingHubPage({ language }: { language: Language }) 
                 <span className={`program-status ${program.available ? "available" : "waitlist"}`}>{ar ? program.statusAr : program.statusEn}</span>
                 <h3>{ar ? program.titleAr : program.titleEn}</h3>
                 <p>{ar ? program.introAr : program.introEn}</p>
+                <div className="program-detail level-duration"><small>{ar ? "مدة المستوى" : "Level duration"}</small><b>{ar ? "3 أشهر • 24 جلسة Live" : "3 months • 24 live sessions"}</b></div>
                 <div className="program-detail"><small>{ar ? "ما سيتقنه" : "Core outcome"}</small><b>{ar ? program.outcomeAr : program.outcomeEn}</b></div>
                 <div className="program-detail"><small>{ar ? "المشروع النهائي" : "Final project"}</small><b>{ar ? program.projectAr : program.projectEn}</b></div>
                 <div className="skill-list">{program.skills.map((skill) => <span key={skill}>{skill}</span>)}</div>
-                <a href="#path-finder">{ar ? "أريد معرفة إن كان هذا المسار مناسبًا لطفلي" : "Check whether this path fits my child"}<ArrowIcon /></a>
+                <a href="#path-finder">{ar ? "اطلبي تقييم المستوى المناسب" : "Request the right level assessment"}<ArrowIcon /></a>
               </article>
             ))}
           </div>
@@ -632,15 +632,16 @@ export default function KidsCodingHubPage({ language }: { language: Language }) 
 
         <section className="program-plan-section" id="program-plan" aria-labelledby="program-plan-title">
           <div className="section-intro centered narrow">
-            <span className="section-kicker">{ar ? "البرنامج الأساسي" : "The core program"}</span>
-            <h2 id="program-plan-title">{ar ? "رحلة واضحة من أول فكرة إلى مشروع نهائي." : "A clear journey from first idea to final project."}</h2>
-            <p>{ar ? "8 جلسات كل شهر، بمعدل جلستين أسبوعيًا. الجلسات Live، وتوجد مواد قصيرة للمراجعة بين اللقاءات." : "Eight sessions each month, usually two sessions per week. Sessions are live, with short review materials between meetings."}</p>
+            <span className="section-kicker">{ar ? "نظام المستويات" : "How levels work"}</span>
+            <h2 id="program-plan-title">{ar ? "كل Level رحلة مكتملة لمدة 3 أشهر، ثم ننتقل عند الجاهزية." : "Each level is a complete 3-month journey, then learners progress when they are ready."}</h2>
+            <p>{ar ? "المستوى الواحد يتضمن 24 جلسة Live: 8 جلسات شهريًا، بمعدل جلستين أسبوعيًا، ومشروعًا واضحًا في نهايته. لا نضع كل الأعمار في برنامج واحد." : "One level includes 24 live sessions: 8 sessions each month, usually two per week, and a clear end-of-level project. Learners do not follow one universal program across all ages."}</p>
           </div>
-          <div className="program-plan-grid">
-            <article><span>01</span><small>{ar ? "الشهر الأول — Explore" : "Month 1 — Explore"}</small><h3>{ar ? "نفهم الأداة والمنطق" : "Understand the tool and logic"}</h3><p>{ar ? "التسلسل، الحركة، الأحداث، والتفاعل عبر Mini Project." : "Sequencing, motion, events, and interaction through a mini project."}</p></article>
-            <article><span>02</span><small>{ar ? "الشهر الثاني — Build" : "Month 2 — Build"}</small><h3>{ar ? "نبني النسخة الأولى" : "Build the first version"}</h3><p>{ar ? "التكرار، الشروط، المتغيرات، التصميم، وDebugging." : "Loops, conditions, variables, design, and debugging."}</p></article>
-            <article><span>03</span><small>{ar ? "الشهر الثالث — Create" : "Month 3 — Create"}</small><h3>{ar ? "نختبر ونشارك" : "Test and share"}</h3><p>{ar ? "تطوير المشروع، الاختبار، العرض، وPortfolio في Demo Day." : "Develop, test, present, and build a portfolio in Demo Day."}</p></article>
+          <div className="level-journey-grid">
+            <article><span>01</span><small>{ar ? "الأسابيع 1–4" : "Weeks 1–4"}</small><h3>{ar ? "اكتشاف وبداية صحيحة" : "Explore and start well"}</h3><p>{ar ? "نتعرف على الأداة، ونحدد الهدف، ونبني أول جزء يعمل من المشروع." : "Meet the tool, set a goal, and build the first working part of the project."}</p></article>
+            <article><span>02</span><small>{ar ? "الأسابيع 5–8" : "Weeks 5–8"}</small><h3>{ar ? "بناء وتطوير المهارة" : "Build and develop skills"}</h3><p>{ar ? "نضيف المنطق والتحديات والتصميم، ونتعلم كيف نختبر ونصلح الأخطاء." : "Add logic, challenges, and design while learning how to test and debug."}</p></article>
+            <article><span>03</span><small>{ar ? "الأسابيع 9–12" : "Weeks 9–12"}</small><h3>{ar ? "مشروع وعرض وتقييم" : "Project, presentation, and review"}</h3><p>{ar ? "نُنهي مشروع المستوى، ويستطيع الطفل عرضه وشرحه قبل اقتراح Level التالي." : "Finish the level project, present it, and receive a next-level recommendation."}</p></article>
           </div>
+          <div className="level-next-step"><b>{ar ? "بعد كل Level" : "After every level"}</b><span>{ar ? "نراجع المشروع والتقدم، ثم نقترح المستوى التالي فقط إذا كان مناسبًا لعمر الطفل ومهاراته." : "We review the project and progress, then recommend the next level only when it fits the learner’s age and skills."}</span></div>
         </section>
 
         <section className="finder-section" id="path-finder" aria-labelledby="finder-title">
@@ -701,26 +702,26 @@ export default function KidsCodingHubPage({ language }: { language: Language }) 
 
         <section className="parent-benefits-section" id="parents" aria-labelledby="parents-title">
           <div className="section-intro split">
-            <div><span className="section-kicker">{ar ? "للآباء والأمهات" : "For parents"}</span><h2 id="parents-title">{ar ? "تعرفين ماذا يحدث بعد كل جلسة." : "Know what happens after every session."}</h2></div>
-            <p>{ar ? "الطفل هو المتعلم، لكن ولي الأمر شريك في الرحلة. لذلك نوضح المخرجات والمتابعة والخطوة التالية دون وعود مبالغ فيها." : "The child is the learner, but the parent is a partner in the journey. We make outcomes, follow-up, and next steps clear without exaggerated promises."}</p>
+            <div><span className="section-kicker">{ar ? "دليل ولي الأمر" : "Parent guide"}</span><h2 id="parents-title">{ar ? "تعرّفين المستوى المناسب، وما الذي سيحدث بعده." : "Understand the right level—and what happens next."}</h2></div>
+            <p>{ar ? "لا نعد بنتائج عامة. نختار Level مناسبًا، نوضح هدفه، ونجعلكِ شريكة في متابعة التقدم من البداية إلى مشروع نهاية المستوى." : "We do not make generic promises. We choose a suitable level, make its outcome clear, and keep you involved from the first session to the end-of-level project."}</p>
           </div>
-          <div className="parent-benefits-table" role="table" aria-label={ar ? "ما يحصل عليه الطالب والأسرة" : "What the learner and family receive"}>
-            <div className="parent-benefit-row table-head" role="row"><b>{ar ? "ما يحصل عليه الطالب والأسرة" : "What the learner and family receive"}</b><b>{ar ? "التفاصيل" : "Details"}</b></div>
-            <div className="parent-benefit-row" role="row"><b>{ar ? "24 جلسة Live" : "24 live sessions"}</b><span>{ar ? "8 جلسات شهريًا لمدة 3 أشهر" : "8 sessions per month for 3 months"}</span></div>
-            <div className="parent-benefit-row" role="row"><b>{ar ? "مجموعة صغيرة" : "Small group"}</b><span>{ar ? "5–8 طلاب متقاربين في العمر والمستوى" : "5–8 learners close in age and level"}</span></div>
-            <div className="parent-benefit-row" role="row"><b>{ar ? "مواد مراجعة" : "Review material"}</b><span>{ar ? "فيديوهات قصيرة أو ملفات بعد الجلسات" : "Short videos or files after sessions"}</span></div>
-            <div className="parent-benefit-row" role="row"><b>{ar ? "مشروع نهائي" : "Final project"}</b><span>{ar ? "نتيجة ملموسة قابلة للعرض والشرح" : "A tangible result that can be shown and explained"}</span></div>
-            <div className="parent-benefit-row" role="row"><b>{ar ? "متابعة ودعم" : "Follow-up and support"}</b><span>{ar ? "ملاحظة بعد الجلسة، تقرير تقدم شهري، وتواصل مع ولي الأمر عبر WhatsApp" : "Post-session notes, a monthly progress update, and WhatsApp parent communication"}</span></div>
+          <div className="parent-roadmap">
+            <aside className="parent-promise"><span>{ar ? "كل Level" : "Every level"}</span><b>{ar ? "3 أشهر • 24 جلسة Live" : "3 months • 24 live sessions"}</b><p>{ar ? "خطوة تعليمية مكتملة، وليست اشتراكًا مفتوحًا بلا نهاية واضحة." : "A complete learning step—not an open-ended subscription with no clear finish."}</p><a className="text-cta" href="#path-finder">{ar ? "ابدئي باختبار المستوى" : "Start with the level check"}<ArrowIcon /></a></aside>
+            <div className="parent-stages">
+              <article><span>01</span><div><b>{ar ? "قبل البداية" : "Before starting"}</b><p>{ar ? "اختبار قصير أو رسالة WhatsApp لتأكيد العمر والخبرة والهدف والموعد المناسب." : "A short check or WhatsApp conversation confirms age, experience, goal, and a suitable time."}</p></div></article>
+              <article><span>02</span><div><b>{ar ? "أثناء المستوى" : "During the level"}</b><p>{ar ? "8 جلسات شهريًا في مجموعة صغيرة متقاربة في العمر والمستوى، مع مواد مراجعة عند الحاجة." : "Eight sessions per month in a small group close in age and level, with review material when needed."}</p></div></article>
+              <article><span>03</span><div><b>{ar ? "في نهاية المستوى" : "At level completion"}</b><p>{ar ? "مشروع قابل للعرض والشرح، ومراجعة للتقدم، ثم اقتراح Level التالي عند الجاهزية فقط." : "A project the learner can show and explain, a progress review, and a next-level recommendation only when ready."}</p></div></article>
+            </div>
           </div>
         </section>
 
         <section className="registration-section" id="registration" aria-labelledby="registration-title">
           <div className="registration-card">
             <span className="section-kicker light">{ar ? "التسجيل والدفع" : "Registration & payment"}</span>
-            <h2 id="registration-title">{ar ? "تفاصيل التسجيل والدفع تُرسل لكِ بوضوح قبل تأكيد المقعد." : "Registration and payment details are shared clearly before a place is confirmed."}</h2>
-            <p>{ar ? "بعد اختبار المسار ومعرفة الدولة والموعد المناسب، نرسل لكِ تفاصيل البرنامج، طريقة التحويل المتاحة، وسياسة الحضور والاسترداد. يمكن دفع البرنامج كاملًا أو على ثلاث دفعات شهرية محددة. لا يتم تأكيد المقعد إلا بعد وصول الدفع والتحقق منه." : "After the path check and confirming country and schedule, we send the program details, available payment method, and attendance and refund policy. You can pay in full or in three specified monthly installments. A place is confirmed only after payment is received and verified."}</p>
+            <h2 id="registration-title">{ar ? "تحجزين Level واضحًا، وليس برنامجًا عامًا غير محدد." : "You reserve a clear level—not an undefined general program."}</h2>
+            <p>{ar ? "بعد تحديد المستوى المناسب والدولة والموعد، نرسل لكِ خطة الـ Level ومدته 3 أشهر و24 جلسة، وطريقة الدفع وسياسة الحضور والاسترداد. يمكن دفع قيمة الـ Level كاملة أو على ثلاث دفعات شهرية محددة. لا يتأكد المقعد إلا بعد الاتفاق على المجموعة والموعد والتحقق من الدفع." : "After confirming the suitable level, country, and schedule, we share the 3-month / 24-live-session level plan, payment method, and attendance and refund policy. A level may be paid in full or in three specified monthly installments. A place is confirmed once the group, schedule, and payment are confirmed."}</p>
             <div className="registration-actions"><a className="button primary" href={waLink(parentMessage)} target="_blank" rel="noreferrer" onClick={() => trackLead("registration_details")}>{ar ? "اطلبي تفاصيل التسجيل" : "Request registration details"}<ArrowIcon /></a><a className="text-cta light" href={waLink(parentMessage)} target="_blank" rel="noreferrer">{ar ? "تحدثي مع فاطمة" : "Talk to Fatma"}<ArrowIcon /></a></div>
-            <small>{ar ? "لا نعرض سعرًا عامًا لأن المسار والعملة والموعد يختلفون حسب الدولة والمستوى." : "We do not publish a general price because track, currency, and schedule vary by country and level."}</small>
+            <small>{ar ? "لا نعرض سعرًا عامًا لأن السعر والعملة والموعد يختلفون حسب الدولة والـ Level المناسب." : "We do not publish a general price because price, currency, and schedule vary by country and the appropriate level."}</small>
           </div>
         </section>
 
@@ -799,11 +800,11 @@ export default function KidsCodingHubPage({ language }: { language: Language }) 
           </div>
           <div className="content-grid">
             <div className="video-column">
-              <div className="content-channel"><Logo compact /><div><span>YouTube</span><b>@fatmanour1512</b></div><ExternalLink href={SOCIAL.youtube}>{ar ? "زيارة القناة" : "Visit channel"}<ArrowIcon /></ExternalLink></div>
+              <div className="content-channel"><Logo /><div><span>YouTube</span><b>@fatmanour1512</b></div><ExternalLink href={SOCIAL.youtube}>{ar ? "زيارة القناة" : "Visit channel"}<ArrowIcon /></ExternalLink></div>
               {videos.map((video) => <ExternalLink className="video-card" href={`https://www.youtube.com/watch?v=${video.id}`} key={video.id}><div className="video-thumb"><img src={video.image} alt="" width="480" height="270" loading="lazy" /><span>▶</span></div><div><small>{ar ? video.tagAr : video.tagEn}</small><h3>{ar ? video.titleAr : video.titleEn}</h3></div></ExternalLink>)}
             </div>
             <div className="blog-column">
-              <div className="blog-logo"><Logo /><span>{ar ? "معرفة تساعدك على اتخاذ قرار أفضل" : "Guidance for better learning decisions"}</span></div>
+              <div className="blog-logo"><Logo /><span>{ar ? "معرفة تساعدك على اختيار Level مناسب وخطوة صحيحة" : "Guidance that helps you choose the right level and next step"}</span></div>
               <div className="article-list">{articles.map((article, index) => <ExternalLink href={article.href} key={article.href}><span>0{index + 1}</span><h3>{ar ? article.titleAr : article.titleEn}</h3><ArrowIcon /></ExternalLink>)}</div>
               <ExternalLink className="text-cta" href={SOCIAL.blog}>{ar ? "اقرئي المزيد في المدونة" : "Read more on the blog"}<ArrowIcon /></ExternalLink>
             </div>
@@ -817,14 +818,14 @@ export default function KidsCodingHubPage({ language }: { language: Language }) 
 
         <section className="final-cta" id="contact" aria-labelledby="contact-title">
           <div className="final-logo"><Logo /></div>
-          <div><span>{ar ? "خطوة واضحة بدون ضغط" : "A clear next step without pressure"}</span><h2 id="contact-title">{ar ? "لا يحتاج طفلك إلى بداية مثالية؛ يحتاج إلى مشروع مناسب وخطوة واضحة." : "Your child does not need a perfect start; they need the right project and a clear next step."}</h2><p>{ar ? "أرسلي العمر والدولة وما يحب طفلك أن يصنعه، وسنقترح المسار الأول المناسب." : "Share the age, country, and what your child would like to make, and we will suggest a suitable first path."}</p></div>
+          <div><span>{ar ? "خطوة واضحة بدون ضغط" : "A clear next step without pressure"}</span><h2 id="contact-title">{ar ? "لا يحتاج طفلك إلى بداية مثالية؛ يحتاج إلى Level مناسب وخطوة واضحة." : "Your child does not need a perfect start; they need the right level and a clear next step."}</h2><p>{ar ? "أرسلي العمر والدولة وما يحب طفلك أن يصنعه، وسنقترح الـ Level الأول المناسب ومدته وخطوة التسجيل." : "Share the age, country, and what your child would like to make, and we will suggest the first suitable level, its duration, and the registration step."}</p></div>
           <div className="final-actions"><a className="button primary" href="#path-finder">{ar ? "اختبار المسار" : "Find a path"}<ArrowIcon /></a><a className="button secondary" href={waLink(parentMessage)} target="_blank" rel="noreferrer" onClick={() => trackLead("final_parent")}>WhatsApp</a></div>
         </section>
       </main>
 
       <footer className="site-footer">
         <div className="footer-main">
-          <div className="footer-brand"><a className="brand" href={sitePath(ar ? "/" : ENGLISH_PATH)}><Logo compact /><span className="brand-type"><b>Kids Coding Hub</b><small>{ar ? "نتعلّم • نبني • نشارك" : "Learn • Build • Share"}</small></span></a><p>{ar ? "تعليم برمجة وذكاء اصطناعي قائم على المشروعات للأطفال من 6 إلى 18+ سنة." : "Project-based coding and AI learning for ages 6 to 18+."}</p></div>
+          <div className="footer-brand"><a className="brand" href={sitePath(ar ? "/" : ENGLISH_PATH)}><Logo /></a><p>{ar ? "Levels في البرمجة والذكاء الاصطناعي للأطفال من 6 إلى 18+ سنة؛ مدة كل Level 3 أشهر ومشروع واضح في النهاية." : "Coding and AI levels for ages 6 to 18+; each level lasts 3 months and ends with a clear project."}</p></div>
           <div className="footer-nav"><b>{ar ? "استكشف" : "Explore"}</b><a href="#programs">{ar ? "المسارات" : "Programs"}</a><a href="#path-finder">{ar ? "اختبار المسار" : "Path finder"}</a><a href="#schools">{ar ? "للمدارس" : "For schools"}</a><a href="#about">{ar ? "عن فاطمة" : "About Fatma"}</a></div>
           <div className="footer-nav"><b>{ar ? "تابعنا" : "Follow"}</b><ExternalLink href={SOCIAL.instagram}>Instagram</ExternalLink><ExternalLink href={SOCIAL.facebook}>Facebook</ExternalLink><ExternalLink href={SOCIAL.youtube}>YouTube</ExternalLink><ExternalLink href={SOCIAL.linkedin}>LinkedIn</ExternalLink></div>
           <div className="footer-contact"><b>{ar ? "جاهزة للبداية؟" : "Ready to begin?"}</b><p>{ar ? "أرسلي العمر والهدف والدولة." : "Share the age, goal, and country."}</p><a href={waLink(parentMessage)} target="_blank" rel="noreferrer">WhatsApp<ArrowIcon /></a></div>

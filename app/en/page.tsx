@@ -4,7 +4,7 @@ import { absoluteSiteUrl, ENGLISH_PATH } from "../site-config";
 
 export const metadata: Metadata = {
   title: "Coding for Kids Online",
-  description: "A practical 3-month, 24-live-session program helping ages 6–18+ build a game, interactive story, or Python project with clear parent follow-up.",
+  description: "Progressive Arabic-first coding and AI levels for ages 6–18+. Each level lasts 3 months, includes 24 live sessions, and ends with a project and clear parent follow-up.",
   keywords: [
     "coding for kids",
     "Scratch course for kids",
@@ -29,14 +29,14 @@ export const metadata: Metadata = {
     alternateLocale: "ar_EG",
     url: absoluteSiteUrl(ENGLISH_PATH),
     title: "Kids Coding Hub | From curiosity to a first project",
-    description: "A practical 3-month, 24-live-session coding program for children, with clear outcomes and parent follow-up.",
+    description: "Each level includes 3 months and 24 live sessions for Scratch and Python learning through practical projects, with clear parent follow-up.",
     siteName: "Kids Coding Hub",
     images: [{ url: absoluteSiteUrl("/media/kids-coding-hub-og.jpg"), width: 1200, height: 630, alt: "Kids Coding Hub with Fatma Nour" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Kids Coding Hub",
-    description: "Project-based coding and AI learning for ages 6–18+, with a clear program journey and final project.",
+    description: "Coding and AI levels for ages 6–18+; each level lasts 3 months and ends with a clear project.",
     images: [absoluteSiteUrl("/media/kids-coding-hub-og.jpg")],
   },
 };
