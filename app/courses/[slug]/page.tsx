@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import AnalyticsLink from "../../AnalyticsLink";
 import { COURSE_LEVELS, getCourseLevel } from "../../course-data";
 import { absoluteSiteUrl, ENGLISH_PATH, sitePath } from "../../site-config";
 
@@ -88,7 +89,7 @@ export default async function CoursePage({ params }: { params: Promise<Params> }
       <header className="course-topbar">
         <a href={sitePath("/")} className="course-brand" aria-label="Kids Coding Hub — الرئيسية"><img src={sitePath("/media/kids-coding-hub-logo.png")} width="1536" height="1024" alt="Kids Coding Hub" /></a>
         <nav aria-label="التنقل داخل الصفحة"><a href="#journey">الرحلة</a><a href="#tools">المهارات</a><a href="#parents">للآباء</a><a href="#faq">الأسئلة</a></nav>
-        <a className="course-top-cta" href={whatsappUrl} target="_blank" rel="noreferrer">اسألي عن الـ Level</a>
+        <AnalyticsLink className="course-top-cta" href={whatsappUrl} source="course_topbar" params={{ page_language: "ar", course_slug: course.slug }}>اسألي عن الـ Level</AnalyticsLink>
       </header>
 
       <section className="course-hero">
@@ -98,7 +99,7 @@ export default async function CoursePage({ params }: { params: Promise<Params> }
           <p className="course-eyebrow">{course.eyebrowAr}</p>
           <h1>{course.titleAr}</h1>
           <p className="course-lead">{course.descriptionAr}</p>
-          <div className="course-actions"><a href={whatsappUrl} target="_blank" rel="noreferrer" className="course-button primary">اطلبي تقييم المستوى <ArrowIcon /></a><a href="#journey" className="course-button ghost">شاهدي ما سيتعلمه طفلك</a></div>
+          <div className="course-actions"><AnalyticsLink href={whatsappUrl} source="course_hero_assessment" params={{ page_language: "ar", course_slug: course.slug }} className="course-button primary">اطلبي تقييم المستوى <ArrowIcon /></AnalyticsLink><a href="#journey" className="course-button ghost">شاهدي ما سيتعلمه طفلك</a></div>
           <p className="course-hero-note"><CheckIcon />{course.heroNoteAr}</p>
         </div>
         <aside className="course-project-card" aria-label="معلومات المستوى">
@@ -148,14 +149,14 @@ export default async function CoursePage({ params }: { params: Promise<Params> }
       </section>
 
       <section className="course-section course-parent-section" id="parents">
-        <div className="course-parent-card"><span>للآباء والأمهات</span><h2>تعرفين ما الذي يحدث، وما الذي سيتحسن، وما هي الخطوة التالية.</h2><p>المتابعة ليست رسائل عامة. نوضح نقطة البداية وهدف الـ Level ومشروع النهاية، ثم نراجع الجاهزية قبل الانتقال.</p><a href={whatsappUrl} target="_blank" rel="noreferrer" className="course-text-link">تحدثي مع فاطمة عن مستوى طفلك <ArrowIcon /></a></div>
+        <div className="course-parent-card"><span>للآباء والأمهات</span><h2>تعرفين ما الذي يحدث، وما الذي سيتحسن، وما هي الخطوة التالية.</h2><p>المتابعة ليست رسائل عامة. نوضح نقطة البداية وهدف الـ Level ومشروع النهاية، ثم نراجع الجاهزية قبل الانتقال.</p><AnalyticsLink href={whatsappUrl} source="course_parent_support" params={{ page_language: "ar", course_slug: course.slug }} className="course-text-link">تحدثي مع فاطمة عن مستوى طفلك <ArrowIcon /></AnalyticsLink></div>
         <div className="course-parent-list">{course.parentAr.map((item, index) => <div key={item}><span><CheckIcon /></span><p>{item}</p><b>0{index + 1}</b></div>)}</div>
       </section>
 
       <section className="course-section course-faq-section" id="faq">
         <div className="course-section-heading"><span>أسئلة قبل التسجيل</span><h2>إجابات مباشرة تساعدك على اتخاذ القرار.</h2></div>
         <div className="course-faq-list">{course.faqsAr.map((item, index) => <details key={item.q} open={index === 0}><summary>{item.q}<i>+</i></summary><p>{item.a}</p></details>)}</div>
-        <div className="course-faq-cta"><div><span>ما زلتِ تقارنين بين المستويات؟</span><b>أرسلي العمر والخبرة والوقت المناسب، وسنؤكد لكِ الـ Level والمجموعة المتاحة قبل الحجز.</b></div><a href={whatsappUrl} target="_blank" rel="noreferrer" className="course-button primary">اسألي فاطمة الآن <ArrowIcon /></a></div>
+        <div className="course-faq-cta"><div><span>ما زلتِ تقارنين بين المستويات؟</span><b>أرسلي العمر والخبرة والوقت المناسب، وسنؤكد لكِ الـ Level والمجموعة المتاحة قبل الحجز.</b></div><AnalyticsLink href={whatsappUrl} source="course_faq_cta" params={{ page_language: "ar", course_slug: course.slug }} className="course-button primary">اسألي فاطمة الآن <ArrowIcon /></AnalyticsLink></div>
       </section>
 
       <section className="course-related-section">
@@ -165,7 +166,7 @@ export default async function CoursePage({ params }: { params: Promise<Params> }
 
       <section className="course-bottom-cta">
         <div><span>خطوة أولى بدون ضغط</span><h2>أرسلي عمر طفلك واهتمامه، وسنؤكد الـ Level المناسب قبل أي تسجيل.</h2><p>يمكنكِ سؤال فاطمة عن المجموعة المتاحة، الموعد المناسب، وطريقة التسجيل.</p></div>
-        <a href={whatsappUrl} target="_blank" rel="noreferrer" className="course-button light">اطلبي تقييم المستوى <ArrowIcon /></a>
+        <AnalyticsLink href={whatsappUrl} source="course_bottom_assessment" params={{ page_language: "ar", course_slug: course.slug }} className="course-button light">اطلبي تقييم المستوى <ArrowIcon /></AnalyticsLink>
       </section>
 
       <footer className="course-footer"><a href={sitePath("/")}>← العودة إلى Kids Coding Hub</a><span>© 2026 Kids Coding Hub</span></footer>

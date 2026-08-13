@@ -3,6 +3,7 @@
 /* eslint-disable @next/next/no-img-element */
 
 import { useEffect, useMemo, useState } from "react";
+import { trackPathFinderEvent, trackWhatsAppClick } from "./analytics-events";
 import { absoluteSiteUrl, ENGLISH_PATH, sitePath } from "./site-config";
 
 export type Language = "ar" | "en";
@@ -303,6 +304,10 @@ function trackLead(source: string) {
   analyticsWindow.gtag?.("event", "generate_lead", { lead_source: source });
 }
 
+function trackWhatsApp(source: string, language: Language) {
+  trackWhatsAppClick(source, { page_language: language });
+}
+
 function getQuizResult(answer: QuizAnswer, ar: boolean) {
   if (answer.age === "6-8") {
     return {
@@ -565,7 +570,7 @@ export default function KidsCodingHubPage({ language }: { language: Language }) 
               </p>
               <div className="hero-actions">
                 <a className="button primary" href="#path-finder" onClick={() => trackLead("hero_parent")}>{ar ? "اكتشفي المسار المناسب" : "Find the right path"}<ArrowIcon /></a>
-                <a className="button secondary" href={waLink(parentMessage)} target="_blank" rel="noreferrer" onClick={() => trackLead("hero_whatsapp")}>{ar ? "تحدثي مع فاطمة على WhatsApp" : "Talk to Fatma on WhatsApp"}</a>
+                <a className="button secondary" href={waLink(parentMessage)} target="_blank" rel="noreferrer" onClick={() => trackWhatsApp("hero_whatsapp", language)}>{ar ? "تحدثي مع فاطمة على WhatsApp" : "Talk to Fatma on WhatsApp"}</a>
               </div>
               <p className="microcopy"><CheckIcon />{ar ? "اختبار مجاني • أقل من دقيقة • بدون تسجيل" : "Free • Under one minute • No signup"}</p>
               <div className="hero-proof" aria-label={ar ? "تفاصيل البرنامج" : "Program details"}>
@@ -662,7 +667,10 @@ export default function KidsCodingHubPage({ language }: { language: Language }) 
                   {quizOptions[quizStep].options.map(([value, label]) => {
                     const key = quizOptions[quizStep].key;
                     const selected = quizAnswer[key] === value;
-                    return <button key={value} type="button" className={selected ? "selected" : ""} aria-pressed={selected} onClick={() => setQuizAnswer((answer) => ({ ...answer, [key]: value }))}><span>{label}</span><i>{selected ? "✓" : ""}</i></button>;
+                    return <button key={value} type="button" className={selected ? "selected" : ""} aria-pressed={selected} onClick={() => {
+                        if (quizStep === 0 && !quizAnswer.age) trackPathFinderEvent("path_finder_started", { page_language: language });
+                        setQuizAnswer((answer) => ({ ...answer, [key]: value }));
+                      }}><span>{label}</span><i>{selected ? "✓" : ""}</i></button>;
                   })}
                 </div>
                 <div className="quiz-actions">
@@ -674,7 +682,10 @@ export default function KidsCodingHubPage({ language }: { language: Language }) 
               <div className="quiz-result" aria-live="polite">
                 <span className="result-icon">✓</span><small>{ar ? "المسار المبدئي المقترح" : "Initial suggested path"}</small><h3>{quizResult.title}</h3><p>{quizResult.text}</p><b>{ar ? `المشروع المقترح: ${quizResult.project}` : `Suggested project: ${quizResult.project}`}</b>
                 <p className="result-note">{ar ? "سيتم تأكيد المستوى والموعد بعد محادثة قصيرة مع ولي الأمر." : "The level and schedule are confirmed after a short parent conversation."}</p>
-                <a className="button primary" href={waLink(quizBookingMessage)} target="_blank" rel="noreferrer" onClick={() => trackLead("quiz_result")}>{ar ? "أرسلي النتيجة لفاطمة" : "Send the result to Fatma"}<ArrowIcon /></a>
+                <a className="button primary" href={waLink(quizBookingMessage)} target="_blank" rel="noreferrer" onClick={() => {
+                      trackPathFinderEvent("path_finder_completed", { page_language: language, recommended_level: quizResult.title });
+                      trackWhatsApp("quiz_result", language);
+                    }}>{ar ? "أرسلي النتيجة لفاطمة" : "Send the result to Fatma"}<ArrowIcon /></a>
                 <button type="button" className="restart-quiz" onClick={() => { setQuizAnswer({ age: "", interest: "", experience: "" }); setQuizStep(0); }}>{ar ? "إعادة الاختبار" : "Start again"}</button>
               </div>
             )}
@@ -722,7 +733,7 @@ export default function KidsCodingHubPage({ language }: { language: Language }) 
             <span className="section-kicker light">{ar ? "التسجيل والدفع" : "Registration & payment"}</span>
             <h2 id="registration-title">{ar ? "تحجزين Level واضحًا، وليس برنامجًا عامًا غير محدد." : "You reserve a clear level—not an undefined general program."}</h2>
             <p>{ar ? "بعد تحديد المستوى المناسب والدولة والموعد، نرسل لكِ خطة الـ Level ومدته 3 أشهر و24 جلسة، وطريقة الدفع وسياسة الحضور والاسترداد. يمكن دفع قيمة الـ Level كاملة أو على ثلاث دفعات شهرية محددة. لا يتأكد المقعد إلا بعد الاتفاق على المجموعة والموعد والتحقق من الدفع." : "After confirming the suitable level, country, and schedule, we share the 3-month / 24-live-session level plan, payment method, and attendance and refund policy. A level may be paid in full or in three specified monthly installments. A place is confirmed once the group, schedule, and payment are confirmed."}</p>
-            <div className="registration-actions"><a className="button primary" href={waLink(parentMessage)} target="_blank" rel="noreferrer" onClick={() => trackLead("registration_details")}>{ar ? "اطلبي تفاصيل التسجيل" : "Request registration details"}<ArrowIcon /></a><a className="text-cta light" href={waLink(parentMessage)} target="_blank" rel="noreferrer">{ar ? "تحدثي مع فاطمة" : "Talk to Fatma"}<ArrowIcon /></a></div>
+            <div className="registration-actions"><a className="button primary" href={waLink(parentMessage)} target="_blank" rel="noreferrer" onClick={() => trackWhatsApp("registration_details", language)}>{ar ? "اطلبي تفاصيل التسجيل" : "Request registration details"}<ArrowIcon /></a><a className="text-cta light" href={waLink(parentMessage)} target="_blank" rel="noreferrer">{ar ? "تحدثي مع فاطمة" : "Talk to Fatma"}<ArrowIcon /></a></div>
             <small>{ar ? "لا نعرض سعرًا عامًا لأن السعر والعملة والموعد يختلفون حسب الدولة والـ Level المناسب." : "We do not publish a general price because price, currency, and schedule vary by country and the appropriate level."}</small>
           </div>
         </section>
@@ -757,14 +768,14 @@ export default function KidsCodingHubPage({ language }: { language: Language }) 
             <div className="school-services">
               <span><CheckIcon />After-School Clubs</span><span><CheckIcon />Summer Camps</span><span><CheckIcon />Scratch / Python / AI</span><span><CheckIcon />Train-the-Trainer</span>
             </div>
-            <a className="text-cta light" href={waLink(schoolMessage)} target="_blank" rel="noreferrer" onClick={() => trackLead("school_section")}>{ar ? "تواصلي مباشرة مع فاطمة" : "Talk directly with Fatma"}<ArrowIcon /></a>
+            <a className="text-cta light" href={waLink(schoolMessage)} target="_blank" rel="noreferrer" onClick={() => trackWhatsApp("school_section", language)}>{ar ? "تواصلي مباشرة مع فاطمة" : "Talk directly with Fatma"}<ArrowIcon /></a>
           </div>
           <div className="brief-card">
             <div className="brief-head"><small>{ar ? "طلب مقترح مبدئي" : "Request an initial proposal"}</small><b>{ar ? "3 اختيارات فقط" : "Only three choices"}</b></div>
             <label>{ar ? "نوع الجهة" : "Organization type"}<select value={orgBrief.type} onChange={(event) => setOrgBrief((brief) => ({ ...brief, type: event.target.value }))}><option value="school">{ar ? "مدرسة" : "School"}</option><option value="academy">{ar ? "أكاديمية" : "Academy"}</option><option value="community">{ar ? "مبادرة أو مجتمع" : "Community"}</option><option value="company">{ar ? "شركة" : "Company"}</option></select></label>
             <label>{ar ? "الفئة العمرية" : "Age group"}<select value={orgBrief.age} onChange={(event) => setOrgBrief((brief) => ({ ...brief, age: event.target.value }))}><option value="6-8">6–8</option><option value="9-11">9–11</option><option value="12-14">12–14</option><option value="15-18+">15–18+</option><option value="mixed">{ar ? "أعمار متنوعة" : "Mixed ages"}</option></select></label>
             <label>{ar ? "العدد التقريبي" : "Approximate group size"}<select value={orgBrief.size} onChange={(event) => setOrgBrief((brief) => ({ ...brief, size: event.target.value }))}><option value="under-10">{ar ? "أقل من 10" : "Under 10"}</option><option value="10-20">10–20</option><option value="21-40">21–40</option><option value="40+">40+</option></select></label>
-            <a className="button mint" href={waLink(orgMessage)} target="_blank" rel="noreferrer" onClick={() => trackLead("organization_brief")}>{ar ? "اطلب عرضًا فنيًا وماليًا" : "Request a technical & commercial proposal"}<ArrowIcon /></a>
+            <a className="button mint" href={waLink(orgMessage)} target="_blank" rel="noreferrer" onClick={() => trackWhatsApp("organization_brief", language)}>{ar ? "اطلب عرضًا فنيًا وماليًا" : "Request a technical & commercial proposal"}<ArrowIcon /></a>
             <p>{ar ? "ستفتح رسالة جاهزة؛ أضيفي اسم الجهة والمدينة والموعد قبل الإرسال." : "A prepared message will open. Add your organization, location, and date before sending."}</p>
           </div>
         </section>
@@ -821,7 +832,7 @@ export default function KidsCodingHubPage({ language }: { language: Language }) 
         <section className="final-cta" id="contact" aria-labelledby="contact-title">
           <div className="final-logo"><Logo /></div>
           <div><span>{ar ? "خطوة واضحة بدون ضغط" : "A clear next step without pressure"}</span><h2 id="contact-title">{ar ? "لا يحتاج طفلك إلى بداية مثالية؛ يحتاج إلى Level مناسب وخطوة واضحة." : "Your child does not need a perfect start; they need the right level and a clear next step."}</h2><p>{ar ? "أرسلي العمر والدولة وما يحب طفلك أن يصنعه، وسنقترح الـ Level الأول المناسب ومدته وخطوة التسجيل." : "Share the age, country, and what your child would like to make, and we will suggest the first suitable level, its duration, and the registration step."}</p></div>
-          <div className="final-actions"><a className="button primary" href="#path-finder">{ar ? "اختبار المسار" : "Find a path"}<ArrowIcon /></a><a className="button secondary" href={waLink(parentMessage)} target="_blank" rel="noreferrer" onClick={() => trackLead("final_parent")}>WhatsApp</a></div>
+          <div className="final-actions"><a className="button primary" href="#path-finder">{ar ? "اختبار المسار" : "Find a path"}<ArrowIcon /></a><a className="button secondary" href={waLink(parentMessage)} target="_blank" rel="noreferrer" onClick={() => trackWhatsApp("final_parent", language)}>WhatsApp</a></div>
         </section>
       </main>
 
@@ -835,7 +846,7 @@ export default function KidsCodingHubPage({ language }: { language: Language }) 
         <div className="footer-bottom"><p>© 2026 Kids Coding Hub — {ar ? "أسسته وتقدمه فاطمة نور." : "Founded and led by Fatma Nour."}</p><div><ExternalLink href={SOCIAL.blog}>{ar ? "المدونة" : "Blog"}</ExternalLink><ExternalLink href={SOCIAL.github}>GitHub</ExternalLink></div></div>
       </footer>
 
-      <a className="floating-whatsapp" href={waLink(parentMessage)} target="_blank" rel="noreferrer" aria-label={ar ? "تواصلي عبر WhatsApp" : "Chat on WhatsApp"} onClick={() => trackLead("floating_whatsapp")}><span>WA</span><b>{ar ? "اسألي عن المسار" : "Ask about a path"}</b></a>
+      <a className="floating-whatsapp" href={waLink(parentMessage)} target="_blank" rel="noreferrer" aria-label={ar ? "تواصلي عبر WhatsApp" : "Chat on WhatsApp"} onClick={() => trackWhatsApp("floating_whatsapp", language)}><span>WA</span><b>{ar ? "اسألي عن المسار" : "Ask about a path"}</b></a>
 
       {lightbox !== null && (
         <div className="lightbox" role="dialog" aria-modal="true" aria-label={ar ? "صور نتائج الاستبيان" : "Survey screenshots"} onClick={() => setLightbox(null)}>
