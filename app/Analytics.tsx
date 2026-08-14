@@ -31,7 +31,7 @@ function loadGoogleAnalytics(measurementId: string) {
 }
 
 export default function Analytics() {
-  const measurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID ?? "G-FWS8FDZ6W3";
+  const measurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || "G-FWS8FDZ6W3";
   const [choice, setChoice] = useState<ConsentChoice | null>(null);
   const [language, setLanguage] = useState<"ar" | "en">("ar");
 
