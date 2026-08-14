@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { BLOG_POSTS } from "./blog-data";
 import { COURSE_LEVELS } from "./course-data";
 import { absoluteSiteUrl, ENGLISH_PATH } from "./site-config";
 
@@ -10,6 +11,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const corePages: MetadataRoute.Sitemap = [
     { url: absoluteSiteUrl("/"), lastModified: LAST_UPDATED, changeFrequency: "weekly", priority: 1 },
     { url: absoluteSiteUrl(ENGLISH_PATH), lastModified: LAST_UPDATED, changeFrequency: "weekly", priority: 0.8 },
+  ];
+
+  const blogPages: MetadataRoute.Sitemap = [
+    { url: absoluteSiteUrl("/blog/"), lastModified: LAST_UPDATED, changeFrequency: "weekly", priority: 0.75 },
+    { url: absoluteSiteUrl(`${ENGLISH_PATH}blog/`), lastModified: LAST_UPDATED, changeFrequency: "weekly", priority: 0.65 },
+    ...BLOG_POSTS.flatMap((post) => [
+      { url: absoluteSiteUrl(`/blog/${post.slug}/`), lastModified: new Date(post.updatedAt), changeFrequency: "monthly" as const, priority: 0.7 },
+      { url: absoluteSiteUrl(`${ENGLISH_PATH}blog/${post.slug}/`), lastModified: new Date(post.updatedAt), changeFrequency: "monthly" as const, priority: 0.6 },
+    ]),
   ];
 
   const coursePages: MetadataRoute.Sitemap = COURSE_LEVELS.flatMap((course) => [
@@ -27,5 +37,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ]);
 
-  return [...corePages, ...coursePages];
+  return [...corePages, ...blogPages, ...coursePages];
 }

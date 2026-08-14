@@ -150,19 +150,19 @@ const videos = [
 
 const articles = [
   {
-    titleAr: "7 أخطاء شائعة يقع فيها الآباء عند تعليم أطفالهم البرمجة",
-    titleEn: "7 common mistakes parents make when introducing coding",
-    href: "https://www.kidscodinghub.it.com/2025/12/7.html",
+    titleAr: "ما هو العمر المناسب لتعليم البرمجة للأطفال؟ دليل من 6 إلى 18+",
+    titleEn: "What Is the Right Age to Start Coding? A Parent Guide",
+    href: "/blog/right-age-to-start-coding/",
   },
   {
-    titleAr: "أفضل 5 تطبيقات لتعليم البرمجة للأطفال دون 8 سنوات",
-    titleEn: "5 coding apps for children under eight",
-    href: "https://www.kidscodinghub.it.com/2025/12/5-8.html",
+    titleAr: "ScratchJr أم Scratch؟ كيف تختارين البداية المناسبة لطفلك؟",
+    titleEn: "ScratchJr vs Scratch: Choosing the Right First Coding Tool",
+    href: "/blog/scratchjr-vs-scratch/",
   },
   {
-    titleAr: "دليل المدرب الجديد: كيف تجهز أول حصة برمجة؟",
-    titleEn: "New instructor guide: prepare your first coding session",
-    href: "https://www.kidscodinghub.it.com/2025/11/blog-post_30.html",
+    titleAr: "7 أسئلة قبل حجز كورس برمجة أونلاين لطفلك",
+    titleEn: "7 Questions Before Booking an Online Coding Class",
+    href: "/blog/questions-before-online-coding-course/",
   },
 ];
 
@@ -818,8 +818,8 @@ export default function KidsCodingHubPage({ language }: { language: Language }) 
             </div>
             <div className="blog-column">
               <div className="blog-logo"><Logo /><span>{ar ? "معرفة تساعدك على اختيار Level مناسب وخطوة صحيحة" : "Guidance that helps you choose the right level and next step"}</span></div>
-              <div className="article-list">{articles.map((article, index) => <ExternalLink href={article.href} key={article.href}><span>0{index + 1}</span><h3>{ar ? article.titleAr : article.titleEn}</h3><ArrowIcon /></ExternalLink>)}</div>
-              <ExternalLink className="text-cta" href={SOCIAL.blog}>{ar ? "اقرئي المزيد في المدونة" : "Read more on the blog"}<ArrowIcon /></ExternalLink>
+              <div className="article-list">{articles.map((article, index) => <a href={sitePath(ar ? article.href : `${ENGLISH_PATH}${article.href.replace("/blog/", "blog/")}`)} key={article.href}><span>0{index + 1}</span><h3>{ar ? article.titleAr : article.titleEn}</h3><ArrowIcon /></a>)}</div>
+              <a className="text-cta" href={sitePath(ar ? "/blog/" : `${ENGLISH_PATH}blog/`)}>{ar ? "اقرئي المزيد في المدونة" : "Read more on the blog"}<ArrowIcon /></a>
             </div>
           </div>
         </section>
