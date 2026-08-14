@@ -30,6 +30,34 @@ export default async function ArabicBlogPostPage({ params }: { params: Promise<P
   const post = getBlogPost(slug);
   if (!post) notFound();
   const path = absoluteSiteUrl(`/blog/${post.slug}/`);
-  const structuredData = { "@context": "https://schema.org", "@type": "BlogPosting", "@id": `${path}#article`, headline: post.titleAr, description: post.excerptAr, image: [absoluteSiteUrl("/media/kids-coding-hub-og.jpg")], articleSection: post.categoryAr, keywords: post.keywordsAr.join(", "), datePublished: post.publishedAt, dateModified: post.updatedAt, inLanguage: "ar", author: { "@type": "Person", name: "Fatma Nour", url: absoluteSiteUrl("/#about") }, publisher: { "@type": "Organization", name: "Kids Coding Hub", url: absoluteSiteUrl("/") }, mainEntityOfPage: path };
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BlogPosting",
+        "@id": `${path}#article`,
+        headline: post.titleAr,
+        description: post.excerptAr,
+        image: [absoluteSiteUrl("/media/kids-coding-hub-og.jpg")],
+        articleSection: post.categoryAr,
+        keywords: post.keywordsAr.join(", "),
+        datePublished: post.publishedAt,
+        dateModified: post.updatedAt,
+        inLanguage: "ar",
+        author: { "@type": "Person", name: "Fatma Nour", url: absoluteSiteUrl("/#about") },
+        publisher: { "@type": "Organization", name: "Kids Coding Hub", url: absoluteSiteUrl("/") },
+        mainEntityOfPage: path,
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": `${path}#breadcrumb`,
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "الرئيسية", item: absoluteSiteUrl("/") },
+          { "@type": "ListItem", position: 2, name: "المدونة", item: absoluteSiteUrl("/blog/") },
+          { "@type": "ListItem", position: 3, name: post.categoryAr, item: path },
+        ],
+      },
+    ],
+  };
   return <><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} /><BlogPostView post={post} language="ar" /></>;
 }
