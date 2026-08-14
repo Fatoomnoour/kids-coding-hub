@@ -15,14 +15,11 @@ async function exists(filePath) {
   }
 }
 
-async function prepareCourseDirectories() {
-  for (const coursesDirectory of [
-    path.join(outputDirectory, "courses"),
-    path.join(outputDirectory, "en", "courses"),
-  ]) {
+async function prepareRouteDirectories(routeDirectories) {
+  for (const routeDirectory of routeDirectories) {
     let entries = [];
     try {
-      entries = await readdir(coursesDirectory, { withFileTypes: true });
+      entries = await readdir(routeDirectory, { withFileTypes: true });
     } catch {
       continue;
     }
@@ -30,8 +27,8 @@ async function prepareCourseDirectories() {
     for (const entry of entries) {
       if (!entry.isFile() || !entry.name.endsWith(".html") || entry.name === "index.html") continue;
       const slug = entry.name.slice(0, -".html".length);
-      const source = path.join(coursesDirectory, entry.name);
-      const targetDirectory = path.join(coursesDirectory, slug);
+      const source = path.join(routeDirectory, entry.name);
+      const targetDirectory = path.join(routeDirectory, slug);
       const target = path.join(targetDirectory, "index.html");
       await mkdir(targetDirectory, { recursive: true });
       await copyFile(source, target);
@@ -39,7 +36,32 @@ async function prepareCourseDirectories() {
   }
 }
 
+async function prepareCourseDirectories() {
+  await prepareRouteDirectories([
+    path.join(outputDirectory, "courses"),
+    path.join(outputDirectory, "en", "courses"),
+  ]);
+}
+
+async function prepareBlogDirectories() {
+  await prepareRouteDirectories([
+    path.join(outputDirectory, "blog"),
+    path.join(outputDirectory, "en", "blog"),
+  ]);
+
+  for (const [source, target] of [
+    [path.join(outputDirectory, "blog.html"), path.join(outputDirectory, "blog", "index.html")],
+    [path.join(outputDirectory, "en", "blog.html"), path.join(outputDirectory, "en", "blog", "index.html")],
+  ]) {
+    if (await exists(source) && !(await exists(target))) {
+      await mkdir(path.dirname(target), { recursive: true });
+      await copyFile(source, target);
+    }
+  }
+}
+
 await prepareCourseDirectories();
+await prepareBlogDirectories();
 
 const flatExists = await exists(flatEnglishPage);
 const cleanExists = await exists(cleanEnglishPage);
