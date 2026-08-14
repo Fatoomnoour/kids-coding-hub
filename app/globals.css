@@ -1540,3 +1540,19 @@ img { max-width: 100%; }
   .blog-related-articles > div { grid-template-columns: 1fr; }
   .blog-related-articles a { min-height: 135px; }
 }
+
+@media (max-width: 640px) {
+  .floating-whatsapp {
+    width: auto;
+    min-width: 132px;
+    height: 48px;
+    padding: 6px 10px;
+    gap: 7px;
+    border-radius: 999px;
+    inset-inline-end: 12px;
+    bottom: max(14px, env(safe-area-inset-bottom));
+  }
+  [dir="rtl"] .floating-whatsapp { padding: 6px 10px; }
+  .floating-whatsapp span { width: 31px; height: 31px; font-size: 9px; }
+  .floating-whatsapp b { display: block; font-size: 10px; white-space: nowrap; }
+}
