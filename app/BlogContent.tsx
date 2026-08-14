@@ -20,7 +20,7 @@ export function BlogIndex({ language }: { language: Language }) {
   return (
     <main className="blog-page" dir={ar ? "rtl" : "ltr"}>
       <header className="blog-topbar">
-        <a href={sitePath(ar ? "/" : ENGLISH_PATH)} className="blog-brand"><img src={sitePath("/media/kids-coding-hub-logo.png")} width="1536" height="1024" alt="Kids Coding Hub" /></a>
+        <a href={sitePath(ar ? "/" : ENGLISH_PATH)} className="blog-brand"><img src={sitePath("/media/kids-coding-hub-logo.webp")} width="768" height="512" alt="Kids Coding Hub" decoding="async" /></a>
         <nav aria-label={ar ? "تنقل المدونة" : "Blog navigation"}>
           <a href={sitePath(ar ? "/#programs" : `${ENGLISH_PATH}#programs`)}>{ar ? "المستويات" : "Levels"}</a>
           <a href={sitePath(ar ? "/#path-finder" : `${ENGLISH_PATH}#path-finder`)}>{ar ? "اختبار المسار" : "Path finder"}</a>
@@ -59,10 +59,11 @@ export function BlogIndex({ language }: { language: Language }) {
 export function BlogPostView({ post, language }: { post: BlogPost; language: Language }) {
   const ar = language === "ar";
   const relatedCoursePath = sitePath(`${ar ? "/courses/" : `${ENGLISH_PATH}courses/`}${post.relatedCourseSlug}/`);
+  const relatedPosts = BLOG_POSTS.filter((item) => item.slug !== post.slug).slice(0, 2);
   return (
     <main className="blog-page blog-post-page" dir={ar ? "rtl" : "ltr"}>
       <header className="blog-topbar">
-        <a href={sitePath(ar ? "/" : ENGLISH_PATH)} className="blog-brand"><img src={sitePath("/media/kids-coding-hub-logo.png")} width="1536" height="1024" alt="Kids Coding Hub" /></a>
+        <a href={sitePath(ar ? "/" : ENGLISH_PATH)} className="blog-brand"><img src={sitePath("/media/kids-coding-hub-logo.webp")} width="768" height="512" alt="Kids Coding Hub" decoding="async" /></a>
         <nav aria-label={ar ? "تنقل المقال" : "Article navigation"}><a href={sitePath(ar ? "/blog/" : `${ENGLISH_PATH}blog/`)}>{ar ? "كل المقالات" : "All articles"}</a><a href={relatedCoursePath}>{ar ? "المستوى المرتبط" : "Related level"}</a></nav>
         <a className="blog-language" href={sitePath(ar ? `${ENGLISH_PATH}blog/${post.slug}/` : `/blog/${post.slug}/`)}>{ar ? "EN" : "عربي"}</a>
       </header>
@@ -84,6 +85,7 @@ export function BlogPostView({ post, language }: { post: BlogPost; language: Lan
           ))}
         </div>
         <aside className="blog-article-next"><span>{ar ? "الخطوة التالية" : "Next step"}</span><h2>{ar ? "هل تريدين معرفة المستوى الأنسب؟" : "Want to confirm the right level?"}</h2><p>{ar ? "شاهدي تفاصيل المستوى المرتبط أو أرسلي بيانات الطفل قبل التسجيل." : "View the related level or share the learner’s details before enrolment."}</p><div><a className="blog-secondary-button" href={relatedCoursePath}>{ar ? "شاهدي المستوى" : "View the level"}</a><AnalyticsLink href={whatsappUrl(language)} source="blog_article_cta" params={{ page_language: language, article_slug: post.slug, course_slug: post.relatedCourseSlug }} className="blog-cta-button">{ar ? "اسألي فاطمة" : "Ask Fatma"}</AnalyticsLink></div></aside>
+        <section className="blog-related-articles" aria-labelledby="related-articles-title"><span>{ar ? "تابعي القراءة" : "Continue reading"}</span><h2 id="related-articles-title">{ar ? "مقالات مرتبطة تساعدك على اتخاذ القرار." : "Related guides that help you make the next decision."}</h2><div>{relatedPosts.map((item) => <a key={item.slug} href={postPath(item, language)}><small>{ar ? item.categoryAr : item.categoryEn}</small><b>{ar ? item.titleAr : item.titleEn}</b><em>{ar ? "اقرئي المقال" : "Read article"} ↗</em></a>)}</div></section>
       </article>
       <footer className="blog-footer"><a href={sitePath(ar ? "/blog/" : `${ENGLISH_PATH}blog/`)}>{ar ? "← كل المقالات" : "← All articles"}</a><span>© 2026 Kids Coding Hub</span></footer>
     </main>

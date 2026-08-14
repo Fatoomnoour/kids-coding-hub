@@ -87,7 +87,7 @@ export default async function CoursePage({ params }: { params: Promise<Params> }
     <main className={`course-page course-tone-${course.order}`} dir="rtl">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
       <header className="course-topbar">
-        <a href={sitePath("/")} className="course-brand" aria-label="Kids Coding Hub — الرئيسية"><img src={sitePath("/media/kids-coding-hub-logo.png")} width="1536" height="1024" alt="Kids Coding Hub" /></a>
+        <a href={sitePath("/")} className="course-brand" aria-label="Kids Coding Hub — الرئيسية"><img src={sitePath("/media/kids-coding-hub-logo.webp")} width="768" height="512" alt="Kids Coding Hub" decoding="async" /></a>
         <nav aria-label="التنقل داخل الصفحة"><a href="#journey">الرحلة</a><a href="#tools">المهارات</a><a href="#parents">للآباء</a><a href="#faq">الأسئلة</a></nav>
         <AnalyticsLink className="course-top-cta" href={whatsappUrl} source="course_topbar" params={{ page_language: "ar", course_slug: course.slug }}>اسألي عن الـ Level</AnalyticsLink>
       </header>

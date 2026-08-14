@@ -30,6 +30,6 @@ export default async function EnglishBlogPostPage({ params }: { params: Promise<
   const post = getBlogPost(slug);
   if (!post) notFound();
   const path = absoluteSiteUrl(`${ENGLISH_PATH}blog/${post.slug}/`);
-  const structuredData = { "@context": "https://schema.org", "@type": "BlogPosting", "@id": `${path}#article`, headline: post.titleEn, description: post.excerptEn, image: [absoluteSiteUrl("/media/kids-coding-hub-og.jpg")], datePublished: post.publishedAt, dateModified: post.updatedAt, inLanguage: "en", author: { "@type": "Person", name: "Fatma Nour", url: "https://www.linkedin.com/in/fatma-nour-ai-trainer" }, publisher: { "@type": "Organization", name: "Kids Coding Hub", url: absoluteSiteUrl("/") }, mainEntityOfPage: path };
+  const structuredData = { "@context": "https://schema.org", "@type": "BlogPosting", "@id": `${path}#article`, headline: post.titleEn, description: post.excerptEn, image: [absoluteSiteUrl("/media/kids-coding-hub-og.jpg")], articleSection: post.categoryEn, keywords: post.keywordsEn.join(", "), datePublished: post.publishedAt, dateModified: post.updatedAt, inLanguage: "en", author: { "@type": "Person", name: "Fatma Nour", url: absoluteSiteUrl("/#about") }, publisher: { "@type": "Organization", name: "Kids Coding Hub", url: absoluteSiteUrl("/") }, mainEntityOfPage: path };
   return <><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} /><BlogPostView post={post} language="en" /></>;
 }

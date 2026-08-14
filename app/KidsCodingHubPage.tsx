@@ -285,7 +285,10 @@ function CheckIcon() {
 function Logo({ compact = false }: { compact?: boolean }) {
   return (
     <span className={compact ? "brand-logo compact" : "brand-logo"} aria-hidden="true">
-      <img src={sitePath("/media/kids-coding-hub-logo.png")} alt="" width="1536" height="1024" />
+      <picture>
+        <source type="image/webp" srcSet={sitePath("/media/kids-coding-hub-logo.webp")} />
+        <img src={sitePath("/media/kids-coding-hub-logo.png")} alt="" width="1536" height="1024" decoding="async" />
+      </picture>
     </span>
   );
 }
@@ -579,13 +582,17 @@ export default function KidsCodingHubPage({ language }: { language: Language }) 
                 <div><b>5–8</b><span>{ar ? "طلاب في المجموعة" : "Learners per group"}</span></div>
                 <div><b>1</b><span>{ar ? "مشروع في نهاية المستوى" : "Project per level"}</span></div>
               </div>
-              <div className="hero-mascot-inline" aria-hidden="true"><img src={sitePath("/media/kids-coding-hub-robot-cutout.png")} width="2304" height="1536" alt="" /></div>
+              <div className="hero-mascot-inline" aria-hidden="true"><picture><source type="image/webp" srcSet={sitePath("/media/kids-coding-hub-robot-cutout.webp")} /><img src={sitePath("/media/kids-coding-hub-robot-cutout.png")} width="2304" height="1536" alt="" decoding="async" /></picture></div>
             </div>
 
             <div className="hero-visual" aria-label={ar ? "فاطمة نور، مؤسسة Kids Coding Hub" : "Fatma Nour, founder of Kids Coding Hub"}>
               <div className="photo-dots" aria-hidden="true" />
               <div className="photo-frame">
-                <img src={sitePath("/media/fatma-nour.jpg")} width="720" height="1280" alt={ar ? "فاطمة نور، مدربة البرمجة والذكاء الاصطناعي للأطفال" : "Fatma Nour, coding and AI instructor for kids"} fetchPriority="high" />
+                <picture className="photo-media">
+                  <source media="(max-width: 640px)" type="image/webp" srcSet={`${sitePath("/media/fatma-nour-640.webp")} 640w, ${sitePath("/media/fatma-nour-960.webp")} 960w`} sizes="78vw" />
+                  <source type="image/webp" srcSet={`${sitePath("/media/fatma-nour-960.webp")} 960w`} sizes="(max-width: 920px) 350px, 420px" />
+                  <img src={sitePath("/media/fatma-nour.jpg")} width="720" height="1280" alt={ar ? "فاطمة نور، مدربة البرمجة والذكاء الاصطناعي للأطفال" : "Fatma Nour, coding and AI instructor for kids"} fetchPriority="high" decoding="async" />
+                </picture>
                 <div className="photo-caption"><span>{ar ? "معك خطوة بخطوة" : "With you, step by step"}</span><b>Fatma Nour</b></div>
               </div>
               <div className="floating-badge badge-age"><b>6–18+</b><span>{ar ? "سنة" : "years"}</span></div>
@@ -755,7 +762,7 @@ export default function KidsCodingHubPage({ language }: { language: Language }) 
           <details className="evidence-panel">
             <summary>{ar ? "شاهد صور نتائج الاستبيان الأصلية" : "View the original survey screenshots"}<span>+</span></summary>
             <div className="evidence-grid">
-              {feedbackImages.map((item, index) => <button type="button" key={item.src} onClick={() => setLightbox(index)}><img src={item.src} width="623" height="274" alt={ar ? item.altAr : item.altEn} loading="lazy" /><span>{ar ? "تكبير الصورة" : "Enlarge"}</span></button>)}
+              {feedbackImages.map((item, index) => <button type="button" key={item.src} onClick={() => setLightbox(index)}><img src={item.src} width="623" height="274" alt={ar ? item.altAr : item.altEn} loading="lazy" decoding="async" /><span>{ar ? "تكبير الصورة" : "Enlarge"}</span></button>)}
             </div>
           </details>
         </section>
@@ -782,7 +789,7 @@ export default function KidsCodingHubPage({ language }: { language: Language }) 
 
         <section className="about-section" id="about" aria-labelledby="about-title">
           <div className="about-photo">
-            <img src={sitePath("/media/fatma-nour.jpg")} width="720" height="1280" alt={ar ? "فاطمة نور، مؤسسة Kids Coding Hub" : "Fatma Nour, founder of Kids Coding Hub"} loading="lazy" />
+            <picture><source type="image/webp" srcSet={`${sitePath("/media/fatma-nour-640.webp")} 640w, ${sitePath("/media/fatma-nour-960.webp")} 960w`} sizes="(max-width: 640px) 100vw, 470px" /><img src={sitePath("/media/fatma-nour.jpg")} width="720" height="1280" alt={ar ? "فاطمة نور، مؤسسة Kids Coding Hub" : "Fatma Nour, founder of Kids Coding Hub"} loading="lazy" decoding="async" /></picture>
             <div className="founder-tag"><span>{ar ? "المؤسسة والمدربة" : "Founder & instructor"}</span><b>Fatma Nour</b></div>
           </div>
           <div className="about-copy">
@@ -814,7 +821,7 @@ export default function KidsCodingHubPage({ language }: { language: Language }) 
           <div className="content-grid">
             <div className="video-column">
               <div className="content-channel"><Logo /><div><span>YouTube</span><b>@fatmanour1512</b></div><ExternalLink href={SOCIAL.youtube}>{ar ? "زيارة القناة" : "Visit channel"}<ArrowIcon /></ExternalLink></div>
-              {videos.map((video) => <ExternalLink className="video-card" href={`https://www.youtube.com/watch?v=${video.id}`} key={video.id}><div className="video-thumb"><img src={video.image} alt="" width="480" height="270" loading="lazy" /><span>▶</span></div><div><small>{ar ? video.tagAr : video.tagEn}</small><h3>{ar ? video.titleAr : video.titleEn}</h3></div></ExternalLink>)}
+              {videos.map((video) => <ExternalLink className="video-card" href={`https://www.youtube.com/watch?v=${video.id}`} key={video.id}><div className="video-thumb"><img src={video.image} alt="" width="480" height="270" loading="lazy" decoding="async" /><span>▶</span></div><div><small>{ar ? video.tagAr : video.tagEn}</small><h3>{ar ? video.titleAr : video.titleEn}</h3></div></ExternalLink>)}
             </div>
             <div className="blog-column">
               <div className="blog-logo"><Logo /><span>{ar ? "معرفة تساعدك على اختيار Level مناسب وخطوة صحيحة" : "Guidance that helps you choose the right level and next step"}</span></div>
